@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مُوَلِّد أوامر رائد النشاط الطلابي | NashatPrompt AI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Tajawal', sans-serif; }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen p-4 sm:p-8 flex flex-col items-center">
+
+  <header class="max-w-4xl w-full text-center mb-8">
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-bold mb-3 tracking-wide">
+      🏫 الحقيبة الذكية لرائد النشاط المدرسي | جاهز للطباعة والتوثيق
+    </div>
+    <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-2">
+      صانع برومبتات النشاط الطلابي
+    </h1>
+    <p class="text-slate-400 text-sm sm:text-base max-w-2xl mx-auto">
+      توليد أوامر إدارية وتربوية دقيقة لصياغة الخطط التشغيلية، البرامج والفعاليات، التقارير الموثقة، والإذاعات والمسابقات المدرسية.
+    </p>
+  </header>
+
+  <main class="max-w-4xl w-full bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-10 shadow-2xl space-y-6">
+    
+    <div>
+      <label for="activityTopic" class="block text-sm font-bold text-slate-200 mb-2">
+        1. موضوع الفعالية أو المخرجات المطلوبة (الهدف الأساسي) <span class="text-indigo-400">*</span>
+      </label>
+      <textarea id="activityTopic" rows="3" placeholder="مثال: إعداد خطة تفعيل أسبوع البيئة، أو تنظيم مسابقة ثقافية في الذكاء الاصطناعي، أو صياغة تقرير ختامي موثق لليوم الوطني..." class="w-full rounded-2xl bg-slate-950 border border-slate-800 px-4 py-3 text-slate-100 placeholder-slate-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition text-sm sm:text-base resize-none"></textarea>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+      
+      <div>
+        <label for="deliverableType" class="block text-xs font-bold text-slate-300 mb-1.5">📑 نوع المخرج المطلوب</label>
+        <select id="deliverableType" class="w-full rounded-xl bg-slate-950 border border-slate-800 px-3 py-2.5 text-xs sm:text-sm text-slate-200 focus:outline-none focus:border-indigo-500">
+          <option value="خطة تشغيلية وتنفيذية شاملة (الأهداف، المراحل، الميزانية، مؤشرات الأداء)">خطة تشغيلية وزمنية للنشاط</option>
+          <option value="تقرير ختامي رسمي مصمم للتوثيق الإداري (شواهد، إحصاءات، توصيات)">تقرير ختامي موثق للفعالية</option>
+          <option value="برنامج إذاعي مدرسي متكامل ومميز وفقرات تفاعلية">برنامج إذاعة مدرسية متكامل</option>
+          <option value="دليل مسابقة مدرسية (الشروط، آلية التحكيم، بنك الأسئلة، الجوائز)">دليل مسابقة ومنافسة طلابية</option>
+          <option value="مبادرة تطوعية ومجتمعية وفق معايير العمل التطوعي المدرسي">مبادرة تطوعية ومجتمعية</option>
+          <option value="جدول استمارات تقييم وتحكيم وفرز البرامج الطلابية">استمارة تحكيم وتقييم نشاط</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="schoolLevel" class="block text-xs font-bold text-slate-300 mb-1.5">🎒 المرحلة الدراسية</label>
+        <select id="schoolLevel" class="w-full rounded-xl bg-slate-950 border border-slate-800 px-3 py-2.5 text-xs sm:text-sm text-slate-200 focus:outline-none focus:border-indigo-500">
+          <option value="المرحلة الثانوية (بنين / بنات) - برامج نوعية وقيادية وتخصصية">المرحلة الثانوية</option>
+          <option value="المرحلة المتوسطة - أنشطة تنمي التفكير والعمل الجماعي">المرحلة المتوسطة</option>
+          <option value="المرحلة الابتدائية (الصفوف العليا) - مهارية وتنافسية">الابتدائية (الصفوف العليا)</option>
+          <option value="المرحلة الابتدائية (الصفوف الأولية) - تفاعلية حركية وجاذبة">الابتدائية (الصفوف الأولية)</option>
+          <option value="شامل لجميع المراحل المدرسية ومناسب لبيئة المجتمع المدرسي">شامل لكافة المراحل</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="domainField" class="block text-xs font-bold text-slate-300 mb-1.5">🎯 مسار ومجال النشاط</label>
+        <select id="domainField" class="w-full rounded-xl bg-slate-950 border border-slate-800 px-3 py-2.5 text-xs sm:text-sm text-slate-200 focus:outline-none focus:border-indigo-500">
+          <option value="المجال المواطنة والحياة">المجال المواطنة والحياة</option>
+          <option value="المجال العلوم والتقنية">المجال العلوم والتقنية</option>
+          <option value="المجال الثقافة والفنون">المجال الثقافة والفنون</option>
+          <option value="المجال الرياضة والصحة">المجال الرياضة والصحة</option>
+          <option value="المجال النشاط الكشفي">المجال النشاط الكشفي</option>
+          <option value="مسار المناسبات الوطنية والأيام العالمية">المناسبات الوطنية والعالمية</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="writingTone" class="block text-xs font-bold text-slate-300 mb-1.5">✍️ أسلوب ونبرة الصياغة</label>
+        <select id="writingTone" class="w-full rounded-xl bg-slate-950 border border-slate-800 px-3 py-2.5 text-xs sm:text-sm text-slate-200 focus:outline-none focus:border-indigo-500">
+          <option value="صياغة إدارية تربوية رسمية موجهة للإدارة والإشراف التربوي">إداري تربوي رسمي (للتوثيق)</option>
+          <option value="أسلوب حماسي جاذب ومحفز للطلاب والطالبات">حماسي وتفاعلي موجه للطلاب</option>
+          <option value="أسلوب إجرائي منظم بخطوات محددة للجان التنفيذية">إجرائي وتنفيذي للجان النشاط</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="outputStructure" class="block text-xs font-bold text-slate-300 mb-1.5">📊 صيغة العرض والتنسيق</label>
+        <select id="outputStructure" class="w-full rounded-xl bg-slate-950 border border-slate-800 px-3 py-2.5 text-xs sm:text-sm text-slate-200 focus:outline-none focus:border-indigo-500">
+          <option value="جداول Markdown مهيكلة (المهام، التوقيت، المسؤول، متطلبات التنفيذ)">جداول تنفيذية منظمة</option>
+          <option value="نموذج وثيقة رسمية مع خانات الشواهد والإحصائيات">وثيقة تقرير رسمي مع شواهد</option>
+          <option value="فقرات إذاعية مرقمة مع المقدمة والخاتمة والأدوار">نص إذاعي متكامل الأدوار</option>
+          <option value="دليل عمل إجرائي بنقاط متسلسلة وخطة طوارئ">دليل إجرائي متسلسل</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="kpiFocus" class="block text-xs font-bold text-slate-300 mb-1.5">📈 مؤشرات الأداء (KPIs)</label>
+        <select id="kpiFocus" class="w-full rounded-xl bg-slate-950 border border-slate-800 px-3 py-2.5 text-xs sm:text-sm text-slate-200 focus:outline-none focus:border-indigo-500">
+          <option value="نسبة مشاركة الطلاب وتفاعل المجتمع المدرسي">نسبة المشاركة والتفاعل</option>
+          <option value="مدى تحقيق الأهداف المهارية والقيمية المحددة">الأثر القيمي والمهاري المكتسب</option>
+          <option value="الالتزام بالخطة الزمنية وجودة المخرجات المعروضة">الالتزام الزمني وجودة التنفيذ</option>
+        </select>
+      </div>
+
+    </div>
+
+    <div class="p-3 bg-slate-950 border border-slate-800/80 rounded-xl">
+      <label class="inline-flex items-center gap-2 cursor-pointer text-xs text-slate-300 font-medium">
+        <input type="checkbox" id="eduConstraints" checked class="w-4 h-4 rounded bg-slate-900 border-slate-700 text-indigo-500 focus:ring-indigo-400">
+        <span>الالتزام التام بالضوابط الوزارية، إجراءات الأمن والسلامة المدرسية، وحفظ حقوق الملكية الفكرية صالح جمعان الدبسي</span>
+      </label>
+    </div>
+
+    <div class="flex gap-3">
+      <button onclick="generateActivityPrompt()" class="flex-1 bg-indigo-600 hover:bg-indigo-500 text-white font-extrabold py-3.5 px-6 rounded-2xl transition duration-150 flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20 text-sm sm:text-base">
+        <span>توليد برومبت النشاط الطلابي</span>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+      </button>
+      <button onclick="clearActivityAll()" class="px-5 py-3.5 rounded-2xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-sm font-semibold transition">
+        مسح
+      </button>
+    </div>
+
+    <div id="outputContainer" class="hidden space-y-4 pt-4 border-t border-slate-800">
+      
+      <div class="bg-slate-950 border border-slate-800 rounded-2xl p-4">
+        <div class="flex items-center justify-between mb-2">
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-indigo-400"></span>
+            <span class="text-xs font-bold text-slate-300">البرومبت الاحترافي (جاهز للصق في ChatGPT / Claude / Gemini):</span>
+          </div>
+          <button id="copyPromptBtn" onclick="copyResultText('promptResult', 'copyPromptBtn')" class="text-xs px-3 py-1 bg-slate-800 hover:bg-slate-700 text-indigo-400 rounded-lg transition font-semibold">
+            نسخ الأمر التربوي
+          </button>
+        </div>
+        <pre id="promptResult" class="mono text-xs sm:text-sm text-slate-200 whitespace-pre-wrap break-words leading-relaxed select-all"></pre>
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer class="mt-8 text-center text-xs text-slate-500">
+    أداة مساندة لرواد ومشرفي النشاط الطلابي في الميدان التعليمي
+  </footer>
+
+  <script>
+    function generateActivityPrompt() {
+      const topic = document.getElementById('activityTopic').value.trim();
+      if (!topic) {
+        alert('يرجى تحديد موضوع الفعالية أو المخرج المطلوب أولاً.');
+        document.getElementById('activityTopic').focus();
+        return;
+      }
+
+      const deliverable = document.getElementById('deliverableType').value;
+      const level = document.getElementById('schoolLevel').value;
+      const domain = document.getElementById('domainField').value;
+      const tone = document.getElementById('writingTone').value;
+      const format = document.getElementById('outputStructure').value;
+      const kpi = document.getElementById('kpiFocus').value;
+      const hasConstraints = document.getElementById('eduConstraints').checked;
+
+      let strictRules = `- الالتزام بلغة عربية فصحى سليمة 100% وخالية من الأخطاء اللغوية والإملائية.
+- صياغة خطة عمل واضحة وتوزيع مهام عملي يناسب الإمكانيات المدرسية المتاحة.
+- تضمين عناصر قياس الأثر: (${kpi}).`;
+
+      if (hasConstraints) {
+        strictRules += `\n- مراعاة معايير الأمن والسلامة المدرسية أثناء تنفيذ الفعاليات.
+- مراعاة المرحلة العمرية والخصائص النمائية للطلاب المستهدفين.
+- تجنب العموميات الإنشائية وتقديم خطوات وأفكار مبتكرة قابلة للتنفيذ الفوري.`;
+      }
+
+      const promptTemplate = `### [الهوية والدور]:
+تصرف كـ "مشرف أول وخبير متخصص في التخطيط التربوي ورعاية النشاط الطلابي المدرسي". تمتلك خبرة عميقة في صياغة الخطط التشغيلية، إدارة الفعاليات والمعارض، توثيق التقارير الإدارية، وتصميم البرامج المهارية الجاذبة للطلاب.
+
+### [المهمة والمخرج المطلوب]:
+المطلوب صياغة (${deliverable}) بعنوان/موضوع:
+"${topic}"
+
+### [المعطيات ومحددات العمل]:
+• المرحلة الدراسية المستهدفة: ${level}.
+• مجال النشاط: ${domain}.
+• أسلوب ولغة الطرح: ${tone}.
+• التنسيق وشكل الإخراج: ${format}.
+
+### [الشروط والمعايير الإلزامية]:
+${strictRules}
+
+### [الهيكل التنفيذي المطلوب تفصيله بدقة]:
+1. بطاقة تعريفية بالنشاط (الرؤية، الرسالة، الأهداف السلوكية والمهارية).
+2. الخطة التنفيذية وجدول التوقيت الزمني وتوزيع اللجان والمهام.
+3. التجهيزات والمتطلبات اللوجستية وإجراءات السلامة.
+4. بنود التوثيق والشواهد ونموذج التقييم النهائي المعتمد.`;
+
+      document.getElementById('promptResult').textContent = promptTemplate;
+      document.getElementById('outputContainer').classList.remove('hidden');
+      document.getElementById('outputContainer').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function copyResultText(elementId, btnId) {
+      const text = document.getElementById(elementId).textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.getElementById(btnId);
+        const originalText = btn.textContent;
+        btn.textContent = 'تم النسخ بنجاح ✓';
+        btn.classList.add('text-emerald-400');
+        setTimeout(() => {
+          btn.textContent = originalText;
+          btn.classList.remove('text-emerald-400');
+        }, 2000);
+      });
+    }
+
+    function clearActivityAll() {
+      document.getElementById('activityTopic').value = '';
+      document.getElementById('outputContainer').classList.add('hidden');
+    }
+  </script>
+</body>
+</html>
