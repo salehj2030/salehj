@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>مُوَلِّد الأغاني والموسيقى الشرقية والخليجية | OrientalSong AI</title>
+  <title>مُوَلِّد تصاميم الواجهات والفلل السعودية | SaudiVilla AI</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,201 +13,189 @@
     .mono { font-family: 'JetBrains Mono', monospace; }
   </style>
 </head>
-<body class="bg-zinc-950 text-zinc-100 min-h-screen p-4 sm:p-8 flex flex-col items-center">
+<body class="bg-stone-950 text-stone-100 min-h-screen p-4 sm:p-8 flex flex-col items-center">
 
   <header class="max-w-4xl w-full text-center mb-8">
-    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold mb-3 tracking-wide">
-      🪕 استوديو التوزيع والتلحين بالذكاء الاصطناعي | من النص إلى اللحن
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-600/10 border border-amber-500/20 text-amber-400 text-xs font-bold mb-3 tracking-wide">
+      🏛️ المعمار السكني السعودي | Salmani & Modern Facade Studio
     </div>
     <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-2">
-      مُوَلِّد الأغاني والموسيقى الشرقية
+      صانع برومبتات واجهات الفلل السعودية
     </h1>
-    <p class="text-zinc-400 text-sm sm:text-base max-w-2xl mx-auto">
-      ضع كلماتك أو قصيدتك لتحويلها إلى برومبت تلحين وتوزيع متكامل بآلات التخت الشرقي والإيقاعات الخليجية لنماذج Suno و Udio.
+    <p class="text-stone-400 text-sm sm:text-base max-w-2xl mx-auto">
+      توليد أوامر معمارية فائقة الدقة متوافقة مع كود البناء السعودي، الطراز السلماني، الخصوصية السكنية، ومواد التشطيب الفاخرة.
     </p>
   </header>
 
-  <main class="max-w-4xl w-full bg-zinc-900 border border-zinc-800 rounded-3xl p-6 sm:p-10 shadow-2xl space-y-6">
+  <main class="max-w-4xl w-full bg-stone-900 border border-stone-800 rounded-3xl p-6 sm:p-10 shadow-2xl space-y-6">
     
     <div>
-      <label for="lyricsText" class="block text-sm font-bold text-zinc-200 mb-2">
-        1. الكلمات أو الأبيات الشعرية المرفقة <span class="text-emerald-400">*</span>
+      <label for="villaIdea" class="block text-sm font-bold text-stone-200 mb-2">
+        1. مواصفات الفيلا والأبعاد والمدخل <span class="text-amber-400">*</span>
       </label>
-      <textarea id="lyricsText" rows="5" placeholder="الصق هنا كلمات الأغنية أو أبيات القصيدة (فصحى، نبطي، خليجي، شامي، مصري)..." class="w-full rounded-2xl bg-zinc-950 border border-zinc-800 px-4 py-3 text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition text-sm sm:text-base resize-none"></textarea>
+      <textarea id="villaIdea" rows="3" placeholder="مثال: فيلا دورين وملحق على شارعين، مدخل رئيسي دبل هايت مع لاندسكيب خارجي وشلال جداري وسور متناسق..." class="w-full rounded-2xl bg-stone-950 border border-stone-800 px-4 py-3 text-stone-100 placeholder-stone-500 focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition text-sm sm:text-base resize-none"></textarea>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
       
       <div>
-        <label for="orientalGenre" class="block text-xs font-bold text-zinc-300 mb-1.5">🎼 اللون الغنائي والطابع</label>
-        <select id="orientalGenre" class="w-full rounded-xl bg-zinc-950 border border-zinc-800 px-3 py-2.5 text-xs sm:text-sm text-zinc-200 focus:outline-none focus:border-emerald-500">
-          <option value="Khaleeji Tarab, Soulful Gulf Acoustic Ballad, emotional vocal delivery">طرب خليجي وجداني أصيل</option>
-          <option value="Saudi Sheela, High Energy Traditional Folk, Bedouin pride, rapid delivery">شيلة سعودية حماسية سريعة</option>
-          <option value="Classical Arabesque Tarab, Orchestral Andalusian Muwashah style">طرب كلاسيكي وتخت شرقي أصيل</option>
-          <option value="Modern Arabic Pop with traditional oriental strings and percussions">بوب عربي معاصر بتوزيع شرقي</option>
-          <option value="Iraqi Mawal and Chobi, melancholic soulful vocal, intense rhythmic drive">موال ومقام عراقي شجي (طابع شوبي)</option>
-          <option value="Levantine Dabke and Folk, lively celebrations and energetic flute">دبكة وفلكلور شامي حركي</option>
+        <label for="archStyle" class="block text-xs font-bold text-stone-300 mb-1.5">🏰 الطراز والأسلوب المعماري</label>
+        <select id="archStyle" class="w-full rounded-xl bg-stone-950 border border-stone-800 px-3 py-2.5 text-xs sm:text-sm text-stone-200 focus:outline-none focus:border-amber-500">
+          <option value="Salmani Architecture Style, authentic Saudi contemporary heritage, harmonious earthen massing">الطراز السلماني (تراث أصيل بطابع حديث)</option>
+          <option value="Ultra-Modern Luxury Saudi Villa, clean geometric lines, cantilevered volumes">مودرن فاخر (كتل بارزة وخطوط هندسية)</option>
+          <option value="Saudi Neo-Classical Elegance, subtle moldings, grand entrance, refined symmetry">نيوكلاسيك سعودي فخم ومتوازن</option>
+          <option value="Tropical Minimalist Saudi Modern, lush internal courtyards, extensive glass">مودرن مينيمال مع حدائق داخلية وإطلالات</option>
+          <option value="Najdi-Inspired Contemporary, triangular motifs, solid insulated walls">نجدي معاصر (فلسفة حصينة بلمسات حديثة)</option>
         </select>
       </div>
 
       <div>
-        <label for="leadInstruments" class="block text-xs font-bold text-zinc-300 mb-1.5">🪕 الآلات الشرقية والصولوهات</label>
-        <select id="leadInstruments" class="w-full rounded-xl bg-zinc-950 border border-zinc-800 px-3 py-2.5 text-xs sm:text-sm text-zinc-200 focus:outline-none focus:border-emerald-500">
-          <option value="Virtuoso acoustic Oud solos, expressive master Qanun runs, airy soulful Nay">تخت شرقي كامل (عود أصيل + صولو قانون + ناي شجي)</option>
-          <option value="Prominent Oriental Violin ensemble (Kamanjat), expressive emotional Nay leads">أوركسترا كمنجات شرقية واسعة مع صولو ناي</option>
-          <option value="Electric Oud fused with modern sub-bass, traditional acoustic Darbuka">عود كهربائي مع بيس حديث وطبلة شرقية</option>
-          <option value="Traditional Mizmar, layered handclaps, deep Bedouin drums">مزمار شعبي ودفوف وتصفيق جماعي</option>
-          <option value="Solo acoustic Oud with subtle ambient atmospheric string pads">عود منفرد مع خلفية وترية هادئة</option>
+        <label for="claddingMaterials" class="block text-xs font-bold text-stone-300 mb-1.5">🧱 مواد وتشطيبات الواجهة</label>
+        <select id="claddingMaterials" class="w-full rounded-xl bg-stone-950 border border-stone-800 px-3 py-2.5 text-xs sm:text-sm text-stone-200 focus:outline-none focus:border-amber-500">
+          <option value="Riyadh Natural Stone, warm Roman Travertine, dark thermo-wood louvers">حجر الرياض الطبيعي + ترافرتين رومان + خشب معالج</option>
+          <option value="Pure white smooth micro-cement, grey bush-hammered basalt, warm wood panels">بروفايل أبيض ناعم + حجر بازلت رمادي + شرائح خشبية</option>
+          <option value="Creamy Limra limestone cladding, aluminum architectural sunshades, tinted thermal glass">حجر ليمرا كريمي + كواسر ألمنيوم + زجاج حراري</option>
+          <option value="Brushed brass metal accents, dark textured porcelain slabs, warm linear stone">بورسلان حجري رمادي غامق + تفاصيل نحاسية مودرن</option>
         </select>
       </div>
 
       <div>
-        <label for="arabicRhythm" class="block text-xs font-bold text-zinc-300 mb-1.5">🥁 الإيقاع والميزان (Rhythm & Percussion)</label>
-        <select id="arabicRhythm" class="w-full rounded-xl bg-zinc-950 border border-zinc-800 px-3 py-2.5 text-xs sm:text-sm text-zinc-200 focus:outline-none focus:border-emerald-500">
-          <option value="Khabiti rhythm, rapid dynamic Gulf percussion with layered rhythmic handclaps">إيقاع خبيتي سريع مع تصفيق مرواس</option>
-          <option value="Dawsari heavy Gulf beat, powerful Dafoof and deep bass resonance">إيقاع دوسري ثقيل ودفوف عميقة</option>
-          <option value="Samri traditional soulful Gulf tempo, steady authentic groove">إيقاع سامري وجداني هادئ</option>
-          <option value="Classical Maqsum and Wahda Kabira 4/4 tarab groove with acoustic Riqq and Darbuka">إيقاع مقسوم وواحدة كبيرة مع رق ودربكة</option>
-          <option value="Malfouf fast 2/4 dynamic energetic dance rhythm">إيقاع ملفوف 2/4 حيوي وحماسي</option>
-          <option value="Slow atmospheric free-time Taqsim transition into steady rhythm">تقسيم حر بطيء يتصاعد إلى إيقاع منتظم</option>
+        <label for="lightingMood" class="block text-xs font-bold text-stone-300 mb-1.5">💡 الإضاءة والمشهد الزمني</label>
+        <select id="lightingMood" class="w-full rounded-xl bg-stone-950 border border-stone-800 px-3 py-2.5 text-xs sm:text-sm text-stone-200 focus:outline-none focus:border-amber-500">
+          <option value="Golden Hour warm sunset, dramatic 3000K warm architectural linear uplighting, illuminated landscape">الغروب الذهبي + إضاءة معمارية مخفية 3000K</option>
+          <option value="Crisp bright daytime, clear desert blue sky, realistic soft cast shadows on stone">نهاري مشمس وواضح مع ظلال واقعية</option>
+          <option value="Dusk / Blue Hour twilight, interior warm chandeliers glowing through large double-glazed windows">الساعة الزرقاء مع إنارة داخلية دافئة متوهجة</option>
+          <option value="Night architectural showcase with hidden strip LEDs, accent tree spotlights, illuminated entrance gate">ليلي سينمائي مع سبوتلايت ممر وأشجار</option>
         </select>
       </div>
 
       <div>
-        <label for="vocalStyle" class="block text-xs font-bold text-zinc-300 mb-1.5">🎙️ خامة الصوت والأداء الغنائي</label>
-        <select id="vocalStyle" class="w-full rounded-xl bg-zinc-950 border border-zinc-800 px-3 py-2.5 text-xs sm:text-sm text-zinc-200 focus:outline-none focus:border-emerald-500">
-          <option value="Deep emotive male Gulf vocalist, authentic warm resonance, pristine dialect pronunciation">صوت رجالي خليجي رخيم ومشاعر طربية</option>
-          <option value="Powerful expressive female Arab singer, wide dynamic vocal range, rich vibrato">صوت نسائي شرقي متمكن وواسع المساحة</option>
-          <option value="Resonant Bedouin male voice, spirited Sheela intonation, passionate delivery">صوت شيلة بدوي جهوري وعالي النبرة</option>
-          <option value="Harmonious male and female vocal duet with rich choral backing responses">ديو غنائي متناغم مع ردات كورال</option>
+        <label for="privacySystem" class="block text-xs font-bold text-stone-300 mb-1.5">🛡️ الخصوصية والسور الخارجي</label>
+        <select id="privacySystem" class="w-full rounded-xl bg-stone-950 border border-stone-800 px-3 py-2.5 text-xs sm:text-sm text-stone-200 focus:outline-none focus:border-amber-500">
+          <option value="High modern boundary wall integrated with villa facade design, smart electric gate, private setback">سور مودرن منسجم مع كتل الواجهة وبوابة ذكية</option>
+          <option value="Architectural Mashrabiya privacy screens, laser-cut geometric louvers protecting family areas">سواتر مشربية معمارية وكواسر معدنية لحفظ الخصوصية</option>
+          <option value="L-shaped layout with private sunken courtyard and perimeter green wall">توزيع كتل حرف L مع حديقة وخصوصية كاملة</option>
         </select>
       </div>
 
       <div>
-        <label for="tempoBpm" class="block text-xs font-bold text-zinc-300 mb-1.5">⏱️ سرعة الإيقاع (BPM)</label>
-        <select id="tempoBpm" class="w-full rounded-xl bg-zinc-950 border border-zinc-800 px-3 py-2.5 text-xs sm:text-sm text-zinc-200 focus:outline-none focus:border-emerald-500">
-          <option value="Moderate tempo (85-95 BPM), steady emotional groove">متوسط طربي (85-95 BPM)</option>
-          <option value="Upbeat high energy tempo (115-130 BPM), lively rhythmic pulse">سريع حماسي راقص (115-130 BPM)</option>
-          <option value="Slow tarab ballad tempo (65-75 BPM), deep microtonal expression">بطيء شجي ووجداني (65-75 BPM)</option>
+        <label for="landscapeElements" class="block text-xs font-bold text-stone-300 mb-1.5">🌴 اللاندسكيب والنباتات المعتمدة</label>
+        <select id="landscapeElements" class="w-full rounded-xl bg-stone-950 border border-stone-800 px-3 py-2.5 text-xs sm:text-sm text-stone-200 focus:outline-none focus:border-amber-500">
+          <option value="Saudi native landscaping: Washingtonia and date palms, olive trees, minimalist desert plants, smooth travertine pathways">نخيل واشنطنيا وزيتون مع ممرات حجرية فاخرة</option>
+          <option value="Modern water feature, reflecting pool, integrated planter boxes, lush ambient greenery">شلال جداري ومسطح مائي مع أحواض زراعة مودرن</option>
+          <option value="Luxury outdoor seating majlis terrace, porcelain floor tiles, illuminated pergola">جلسة خارجية وتراس مع مظلة برغولا مودرن</option>
         </select>
       </div>
 
       <div>
-        <label for="productionMix" class="block text-xs font-bold text-zinc-300 mb-1.5">🎛️ جودة المكس وهندسة الماستر</label>
-        <select id="productionMix" class="w-full rounded-xl bg-zinc-950 border border-zinc-800 px-3 py-2.5 text-xs sm:text-sm text-zinc-200 focus:outline-none focus:border-emerald-500">
-          <option value="High-end studio recording, pristine analog warmth, wide stereo field, crisp acoustic separation">ماستر استوديو تناظري نقي وعريض (Studio Master)</option>
-          <option value="Authentic live concert hall acoustics, lush natural reverberation, rich stage ambiance">تسجيل حفلة ومسرح حي مع صدى طبيعي</option>
-          <option value="Modern commercial radio production, punchy dynamic low-end, sparkling clarity">مكس تجاري معاصر، وضوح فائق وبيس قوي</option>
+        <label for="cameraAngle" class="block text-xs font-bold text-stone-300 mb-1.5">📷 زاوية اللقطة المعمارية</label>
+        <select id="cameraAngle" class="w-full rounded-xl bg-stone-950 border border-stone-800 px-3 py-2.5 text-xs sm:text-sm text-stone-200 focus:outline-none focus:border-amber-500">
+          <option value="Eye-level 24mm architectural photography perspective, true vertical lines, zero perspective distortion --ar 16:9">منظور عين الإنسان (Eye-level) بزاوية 24mm</option>
+          <option value="Low-angle heroic two-point perspective showing two street facades --ar 16:9">زاوية شارعين تبرز فخامة الكتل (Two-point)</option>
+          <option value="Close-up detail shot focusing on natural stone texture and custom lighting --ar 4:5">لقطة مقربة تبرز تفاصيل الحجر والإضاءة</option>
+          <option value="Elevated drone vantage shot showcasing overall villa and courtyard layout --ar 16:9">منظور جوي درون يوضح توزيع الفناء والفيلا</option>
         </select>
       </div>
 
     </div>
 
-    <div class="p-3 bg-zinc-950 border border-zinc-800/80 rounded-xl">
-      <label class="inline-flex items-center gap-2 cursor-pointer text-xs text-zinc-300 font-medium">
-        <input type="checkbox" id="antiNoiseCheck" checked class="w-4 h-4 rounded bg-zinc-900 border-zinc-700 text-emerald-500 focus:ring-emerald-400">
-        <span>تضمين وسوم نقاء الآلات الحقيقية ومنع التشويش أو الأصوات الآلية الرديئة (Anti-Robotic & Authentic Maqam Tuning)</span>
+    <div class="p-3 bg-stone-950 border border-stone-800/80 rounded-xl">
+      <label class="inline-flex items-center gap-2 cursor-pointer text-xs text-stone-300 font-medium">
+        <input type="checkbox" id="photoRealEngine" checked class="w-4 h-4 rounded bg-stone-900 border-stone-700 text-amber-500 focus:ring-amber-400">
+        <span>تضمين معاملات الواقعية الفائقة المعمارية (Architectural Masterpiece, Octane Render, 8K Photo, No Bent Lines)</span>
       </label>
     </div>
 
     <div class="flex gap-3">
-      <button onclick="generateOrientalSongPrompt()" class="flex-1 bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-extrabold py-3.5 px-6 rounded-2xl transition duration-150 flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20 text-sm sm:text-base">
-        <span>توليد وتوزيع البرومبت الموسيقي</span>
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"/></svg>
+      <button onclick="generateSaudiVillaPrompt()" class="flex-1 bg-amber-500 hover:bg-amber-400 text-stone-950 font-extrabold py-3.5 px-6 rounded-2xl transition duration-150 flex items-center justify-center gap-2 shadow-lg shadow-amber-500/20 text-sm sm:text-base">
+        <span>توليد البرومبت المعماري</span>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
       </button>
-      <button onclick="clearLyricsFields()" class="px-5 py-3.5 rounded-2xl bg-zinc-800 hover:bg-zinc-700 text-zinc-300 text-sm font-semibold transition">
+      <button onclick="clearVillaAll()" class="px-5 py-3.5 rounded-2xl bg-stone-800 hover:bg-stone-700 text-stone-300 text-sm font-semibold transition">
         مسح
       </button>
     </div>
 
-    <div id="songOutputArea" class="hidden space-y-4 pt-4 border-t border-zinc-800">
+    <div id="villaOutputArea" class="hidden space-y-4 pt-4 border-t border-stone-800">
       
-      <div class="bg-zinc-950 border border-zinc-800 rounded-2xl p-4">
+      <div class="bg-stone-950 border border-stone-800 rounded-2xl p-4">
+        <div class="flex items-center justify-between mb-2">
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
+            <span class="text-xs font-bold text-stone-300">البرومبت المعماري الإنجليزي (للصق المباشر في Midjourney / DALL-E 3 / Stable Diffusion):</span>
+          </div>
+          <button id="copyEngPromptBtn" onclick="copySnippet('engVillaResult', 'copyEngPromptBtn')" class="text-xs px-3 py-1 bg-stone-800 hover:bg-stone-700 text-amber-400 rounded-lg transition font-semibold">
+            نسخ البرومبت الإنجليزي
+          </button>
+        </div>
+        <pre id="engVillaResult" class="mono text-xs sm:text-sm text-amber-200/90 whitespace-pre-wrap break-words leading-relaxed select-all"></pre>
+      </div>
+
+      <div class="bg-stone-950 border border-stone-800 rounded-2xl p-4">
         <div class="flex items-center justify-between mb-2">
           <div class="flex items-center gap-2">
             <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
-            <span class="text-xs font-bold text-zinc-300">1. أمر النمط الموسيقي (Style of Music Box في Suno / Udio):</span>
+            <span class="text-xs font-bold text-stone-300">بطاقة التوصيف المعماري والمواد (للعميل والمقاول):</span>
           </div>
-          <button id="copyStyleOnlyBtn" onclick="copySnippetText('styleSnippet', 'copyStyleOnlyBtn')" class="text-xs px-3 py-1 bg-zinc-800 hover:bg-zinc-700 text-emerald-400 rounded-lg transition font-semibold">
-            نسخ النمط
+          <button id="copyArSpecBtn" onclick="copySnippet('arVillaResult', 'copyArSpecBtn')" class="text-xs px-3 py-1 bg-stone-800 hover:bg-stone-700 text-stone-200 rounded-lg transition font-semibold">
+            نسخ المواصفات
           </button>
         </div>
-        <pre id="styleSnippet" class="mono text-xs sm:text-sm text-emerald-200/90 whitespace-pre-wrap break-words leading-relaxed select-all"></pre>
-      </div>
-
-      <div class="bg-zinc-950 border border-zinc-800 rounded-2xl p-4">
-        <div class="flex items-center justify-between mb-2">
-          <div class="flex items-center gap-2">
-            <span class="w-2.5 h-2.5 rounded-full bg-cyan-400"></span>
-            <span class="text-xs font-bold text-zinc-300">2. الكلمات مع وسوم المقاطع الصوتية (Lyrics & Structure Box):</span>
-          </div>
-          <button id="copyLyricsOnlyBtn" onclick="copySnippetText('lyricsSnippet', 'copyLyricsOnlyBtn')" class="text-xs px-3 py-1 bg-zinc-800 hover:bg-zinc-700 text-cyan-300 rounded-lg transition font-semibold">
-            نسخ الكلمات المهيكلة
-          </button>
-        </div>
-        <pre id="lyricsSnippet" class="mono text-xs sm:text-sm text-zinc-300 whitespace-pre-wrap break-words leading-relaxed select-all"></pre>
+        <pre id="arVillaResult" class="text-xs sm:text-sm text-stone-300 whitespace-pre-wrap break-words leading-relaxed select-all"></pre>
       </div>
 
     </div>
 
   </main>
 
-  <footer class="mt-8 text-center text-xs text-zinc-500">
-    مهندس خصيصاً للشعراء، الملحنين، وصناع المحتوى الصوتي | يدعم Suno v3.5 / v4 و Udio AI
+  <footer class="mt-8 text-center text-xs text-stone-500">
+    مهندس خصيصاً للمكاتب الهندسية، المصممين المعماريين، وأصحاب الفلل في السعودية
   </footer>
 
   <script>
-    function generateOrientalSongPrompt() {
-      const lyrics = document.getElementById('lyricsText').value.trim();
-      if (!lyrics) {
-        alert('يرجى إدخال كلمات الأغنية أو القصيدة أولاً.');
-        document.getElementById('lyricsText').focus();
+    function generateSaudiVillaPrompt() {
+      const idea = document.getElementById('villaIdea').value.trim();
+      if (!idea) {
+        alert('يرجى كتابة مواصفات الفيلا الأساسية أولاً.');
+        document.getElementById('villaIdea').focus();
         return;
       }
 
-      const genre = document.getElementById('orientalGenre').value;
-      const instruments = document.getElementById('leadInstruments').value;
-      const rhythm = document.getElementById('arabicRhythm').value;
-      const vocal = document.getElementById('vocalStyle').value;
-      const tempo = document.getElementById('tempoBpm').value;
-      const mix = document.getElementById('productionMix').value;
-      const antiNoise = document.getElementById('antiNoiseCheck').checked;
+      const style = document.getElementById('archStyle').value;
+      const materials = document.getElementById('claddingMaterials').value;
+      const lighting = document.getElementById('lightingMood').value;
+      const privacy = document.getElementById('privacySystem').value;
+      const landscape = document.getElementById('landscapeElements').value;
+      const camera = document.getElementById('cameraAngle').value;
+      const isUltra = document.getElementById('photoRealEngine').checked;
 
-      // 1. بناء برومبت النمط الموسيقي الدقيق (Style Box)
-      let stylePrompt = `${genre}, ${instruments}, ${rhythm}, ${vocal}, ${tempo}, ${mix}`;
-      if (antiNoise) {
-        stylePrompt += `, authentic microtonal Arabic Maqam intonation, pure acoustic warmth, rich harmonic resonance, high fidelity stereo, no electronic autotune glitches, no synthetic distortion`;
-      }
+      // 1. بناء الأمر الإنجليزي الاحترافي
+      let qualityEngine = isUltra ? ", architectural digest photoshoot, 8k resolution, photorealistic, Unreal Engine 5 render, highly detailed textures, Hasselblad H6D-100c camera, sharp focus, perfectly straight vertical lines, realistic ambient occlusion, real world Saudi residential neighborhood context --no distorted geometry, cartoonish render, blurry textures, deformed lines, oversaturated colors" : "";
 
-      // 2. تقسيم الكلمات آلياً وتضمين وسوم التوزيع والميتاتاجز (Lyrics Metatags)
-      const lines = lyrics.split('\n').map(l => l.trim()).filter(l => l.length > 0);
-      let structuredLyrics = '';
+      const englishPrompt = `Ultra-luxurious residential villa exterior in Saudi Arabia, ${idea}. Architectural style: ${style}. Exterior facade finished with ${materials}. ${privacy}. Surrounded by ${landscape}. Lighting & ambiance: ${lighting}. Shot in ${camera}${qualityEngine}`;
 
-      if (lines.length <= 4) {
-        // نص قصير
-        structuredLyrics = `[Intro: Instrumental Taqsim on Oud and Nay]\n[Percussion Entry: ${rhythm.split(',')[0]}]\n\n[Verse]\n${lines.join('\n')}\n\n[Chorus: Harmonized Vocal with Full Strings & Clapping]\n${lines.slice(0, 2).join('\n')}\n\n[Solo: Master Qanun Interlude]\n\n[Outro: Emotional Vocal Fade with Solo Nay]\n[End]`;
-      } else {
-        // نص طويل ومفصل
-        const half = Math.ceil(lines.length / 2);
-        const verse1 = lines.slice(0, half).join('\n');
-        const verse2 = lines.slice(half).join('\n');
-        const chorusLines = lines.slice(0, Math.min(2, lines.length)).join('\n');
+      // 2. بناء بطاقة المواصفات بالعربية
+      const arabicSpecs = `🏛️ [بطاقة التوصيف المعماري للفيلا]:
+• فكرة المشروع: ${idea}
+• الطراز المعماري: ${document.getElementById('archStyle').options[document.getElementById('archStyle').selectedIndex].text}
+• مواد الإكساء والواجهات: ${document.getElementById('claddingMaterials').options[document.getElementById('claddingMaterials').selectedIndex].text}
+• نظام السور والخصوصية: ${document.getElementById('privacySystem').options[document.getElementById('privacySystem').selectedIndex].text}
+• توزيع اللاندسكيب والحدائق: ${document.getElementById('landscapeElements').options[document.getElementById('landscapeElements').selectedIndex].text}
+• توقيت وهندسة الإضاءة: ${document.getElementById('lightingMood').options[document.getElementById('lightingMood').selectedIndex].text}
+• زاوية الإخراج الفوتوغرافي: ${document.getElementById('cameraAngle').options[document.getElementById('cameraAngle').selectedIndex].text}`;
 
-        structuredLyrics = `[Intro: Instrumental Taqsim on Solo Oud with Atmospheric Nay]\n[Rhythm Build-Up: ${rhythm.split(',')[0]}]\n\n[Verse 1]\n${verse1}\n\n[Chorus: Full Orchestration & Layered Arabesque Strings]\n${chorusLines}\n\n[Instrumental Break: Virtuoso Qanun and Nay Dialogue]\n\n[Verse 2: Rising Dynamic Energy]\n${verse2}\n\n[Chorus: Climax with Full Choral Backing & Traditional Percussion]\n${chorusLines}\n\n[Outro: Slow Cadence on Acoustic Oud and Soft Ambient Reverb]\n[Fade Out]\n[End]`;
-      }
-
-      document.getElementById('styleSnippet').textContent = stylePrompt;
-      document.getElementById('lyricsSnippet').textContent = structuredLyrics;
-      document.getElementById('songOutputArea').classList.remove('hidden');
-      document.getElementById('songOutputArea').scrollIntoView({ behavior: 'smooth' });
+      document.getElementById('engVillaResult').textContent = englishPrompt;
+      document.getElementById('arVillaResult').textContent = arabicSpecs;
+      document.getElementById('villaOutputArea').classList.remove('hidden');
+      document.getElementById('villaOutputArea').scrollIntoView({ behavior: 'smooth' });
     }
 
-    function copySnippetText(elementId, btnId) {
+    function copySnippet(elementId, btnId) {
       const text = document.getElementById(elementId).textContent;
       navigator.clipboard.writeText(text).then(() => {
         const btn = document.getElementById(btnId);
         const originalText = btn.textContent;
-        btn.textContent = 'تم النسخ بنجاح ✓';
+        btn.textContent = 'تم النسخ ✓';
         btn.classList.add('text-emerald-400');
         setTimeout(() => {
           btn.textContent = originalText;
@@ -216,9 +204,9 @@
       });
     }
 
-    function clearLyricsFields() {
-      document.getElementById('lyricsText').value = '';
-      document.getElementById('songOutputArea').classList.add('hidden');
+    function clearVillaAll() {
+      document.getElementById('villaIdea').value = '';
+      document.getElementById('villaOutputArea').classList.add('hidden');
     }
   </script>
 </body>
