@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مُوَلِّد أوامر الأفلام القصيرة والسينما | CinePrompt AI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Tajawal', sans-serif; }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+  </style>
+</head>
+<body class="bg-zinc-950 text-zinc-100 min-h-screen p-4 sm:p-8 flex flex-col items-center">
+
+  <!-- الهيدر -->
+  <header class="max-w-4xl w-full text-center mb-8">
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-bold mb-3 tracking-wide">
+      🎬 نظام هندسة الأوامر السينمائية | 100% Cinematic Fidelity
+    </div>
+    <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-2">
+      صانع برومبتات الأفلام القصيرة
+    </h1>
+    <p class="text-zinc-400 text-sm sm:text-base max-w-2xl mx-auto">
+      حوّل أفكار المشاهد إلى أوامر سينمائية دقيقة تتضمن تفاصيل العدسات، حركة الكاميرا، الإضاءة، وأبعاد الكادر جاهزة لأدوات الفيديو والصور.
+    </p>
+  </header>
+
+  <!-- جسم الأداة -->
+  <main class="max-w-4xl w-full bg-zinc-900 border border-zinc-800 rounded-3xl p-6 sm:p-10 shadow-2xl space-y-6">
+    
+    <!-- وصف المشهد الأساسي -->
+    <div>
+      <label for="sceneIdea" class="block text-sm font-bold text-zinc-200 mb-2">
+        1. فكرة المشهد وعناصره الأساسية (Subject & Action) <span class="text-amber-400">*</span>
+      </label>
+      <textarea id="sceneIdea" rows="3" placeholder="مثال: رجل مسن يمشي في زقاق قديم وقت الغروب حاملاً فانوساً، مع تطاير أوراق الشجر في الهواء..." class="w-full rounded-2xl bg-zinc-950 border border-zinc-800 px-4 py-3 text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition text-sm sm:text-base resize-none"></textarea>
+    </div>
+
+    <!-- شبكة الإعدادات السينمائية -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+      
+      <!-- نوع اللقطة والزاوية -->
+      <div>
+        <label for="shotType" class="block text-xs font-bold text-zinc-300 mb-1.5">📐 نوع وحجم اللقطة</label>
+        <select id="shotType" class="w-full rounded-xl bg-zinc-950 border border-zinc-800 px-3 py-2.5 text-xs sm:text-sm text-zinc-200 focus:outline-none focus:border-amber-500">
+          <option value="Cinematic Wide Shot, establishing location depth">لقطة عامة واسعة (Wide Shot)</option>
+          <option value="Close-up Shot focusing on intense micro-expressions">لقطة قريبة (Close-up)</option>
+          <option value="Extreme Close-up Shot highlighting raw textures and eyes">لقطة شديدة القرب (Extreme Close-up)</option>
+          <option value="Medium Tracking Shot capturing character motion">لقطة متوسطة متحركة (Medium Shot)</option>
+          <option value="Low-Angle Heroic Shot conveying tension and dominance">زاوية منخفضة درامية (Low-Angle)</option>
+          <option value="Over-the-shoulder perspective shot creating intimacy">من فوق الكتف (Over-the-Shoulder)</option>
+        </select>
+      </div>
+
+      <!-- حركة الكاميرا -->
+      <div>
+        <label for="cameraMove" class="block text-xs font-bold text-zinc-300 mb-1.5">🎥 حركة الكاميرا (Camera Motion)</label>
+        <select id="cameraMove" class="w-full rounded-xl bg-zinc-950 border border-zinc-800 px-3 py-2.5 text-xs sm:text-sm text-zinc-200 focus:outline-none focus:border-amber-500">
+          <option value="Slow Cinematic Dolly In towards the subject">دولي بطيء للداخل (Slow Dolly-in)</option>
+          <option value="Smooth Steadicam tracking shot following movement">تتبع سلس بستيدي كام (Steadicam Track)</option>
+          <option value="Dramatic FPV Drone sweep around the environment">مسح درون درامي (Drone Sweep)</option>
+          <option value="Static tripod shot with natural subtle handheld breathing">لقطة ثابتة بحركة تنفس طبيعية</option>
+          <option value="Circular Orbit motion accentuating dramatic stillness">دوران محيطي حول الهدف (360 Orbit)</option>
+          <option value="Whip Pan transition with dynamic motion blur">حركة بان سريعة (Whip Pan)</option>
+        </select>
+      </div>
+
+      <!-- نوع الإضاءة والتوقيت -->
+      <div>
+        <label for="lighting" class="block text-xs font-bold text-zinc-300 mb-1.5">💡 نمط الإضاءة (Lighting Setup)</label>
+        <select id="lighting" class="w-full rounded-xl bg-zinc-950 border border-zinc-800 px-3 py-2.5 text-xs sm:text-sm text-zinc-200 focus:outline-none focus:border-amber-500">
+          <option value="Golden Hour warm ambient sunlight with soft rim light">الساعة الذهبية (Warm Golden Hour)</option>
+          <option value="Chiaroscuro high-contrast volumetric shadows and rays">تباين درامي وظلال حجمية (Chiaroscuro)</option>
+          <option value="Moody cinematic blue hour with practical light sources">الساعة الزرقاء مع مصابيح واقعية</option>
+          <option value="Cyberpunk neon backlighting with reflections and wet pavement">نيون سينمائي مع انعكاسات مائية</option>
+          <option value="Diffused natural daylight through misty atmosphere">ضوء نهاري ناعم مع ضباب خفيف</option>
+          <option value="Harsh dramatic spotlight with deep noir pitch-black shadows">إضاءة موجهة حادة بنمط النوار (Noir)</option>
+        </select>
+      </div>
+
+      <!-- نوع العدسة والعمق -->
+      <div>
+        <label for="lensType" class="block text-xs font-bold text-zinc-300 mb-1.5">🔍 العدسة وعمق الميدان</label>
+        <select id="lensType" class="w-full rounded-xl bg-zinc-950 border border-zinc-800 px-3 py-2.5 text-xs sm:text-sm text-zinc-200 focus:outline-none focus:border-amber-500">
+          <option value="Shot on 35mm Anamorphic lens, f/1.8, shallow depth of field, creamy bokeh">عدسة 35mm أنامورفيك وعزل ناعم</option>
+          <option value="50mm Master Prime lens, hyper-realistic textures, clean focal focus">عدسة 50mm برايم واقعية فائقة</option>
+          <option value="85mm Portrait lens, compressed background with cinematic falloff">عدسة 85mm لتركيز المشاعر</option>
+          <option value="24mm Ultra-wide cine lens, expansive perspective with zero distortion">عدسة 24mm سينمائية بزاوية واسعة</option>
+        </select>
+      </div>
+
+      <!-- الطابع الفني وتدرج الألوان -->
+      <div>
+        <label for="colorGrade" class="block text-xs font-bold text-zinc-300 mb-1.5">🎨 تصحيح الألوان (Color Grading)</label>
+        <select id="colorGrade" class="w-full rounded-xl bg-zinc-950 border border-zinc-800 px-3 py-2.5 text-xs sm:text-sm text-zinc-200 focus:outline-none focus:border-amber-500">
+          <option value="Kodak Vision3 35mm film grain, teal and orange palette">فيلم كوداك 35mm (تيل وأورنج سينمائي)</option>
+          <option value="Bleach Bypass muted palette with punchy deep contrast">ألوان باهتة وتباين حاد (Bleach Bypass)</option>
+          <option value="Vintage 70s warm retro cinematic aesthetic with slight halation">طابع سبعيناتي دافئ وهالات ضوئية</option>
+          <option value="Monochromatic high-grain black and white with rich midtones">أبيض وأسود سينمائي عالي الحبيبات</option>
+          <option value="Hyper-vibrant modern cinema grade with balanced skin tones">ألوان عصرية مشبعة وواقعية للبشرة</option>
+        </select>
+      </div>
+
+      <!-- نسبة الكادر والأداة المستهدفة -->
+      <div>
+        <label for="aspectRatio" class="block text-xs font-bold text-zinc-300 mb-1.5">🖥️ نسبة العرض والنموذج</label>
+        <select id="aspectRatio" class="w-full rounded-xl bg-zinc-950 border border-zinc-800 px-3 py-2.5 text-xs sm:text-sm text-zinc-200 focus:outline-none focus:border-amber-500">
+          <option value="--ar 2.39:1 (Cinemascope) | Target: Runway Gen-3 / Sora / Kling">سينما سكوب عريض (2.39:1)</option>
+          <option value="--ar 16:9 (Standard Widescreen HD/4K)">عريض قياسي (16:9 HD/4K)</option>
+          <option value="--ar 9:16 (Vertical Reels & Shorts Cinema)">طولي للجوال (9:16 Reels/Shorts)</option>
+          <option value="--ar 4:3 (Classic Academy Format)">كلاسيكي قديم (4:3)</option>
+        </select>
+      </div>
+
+    </div>
+
+    <!-- قيود الجودة ومنع التشويه البصري -->
+    <div class="p-3 bg-zinc-950 border border-zinc-800/80 rounded-xl">
+      <label class="inline-flex items-center gap-2 cursor-pointer text-xs text-zinc-300 font-medium">
+        <input type="checkbox" id="antiMorph" checked class="w-4 h-4 rounded bg-zinc-900 border-zinc-700 text-amber-500 focus:ring-amber-400">
+        <span>تضمين شروط منع التشوهات البصرية وتفكك الأجسام (Anti-Morphing & High Temporal Consistency)</span>
+      </label>
+    </div>
+
+    <!-- أزرار التوليد -->
+    <div class="flex gap-3">
+      <button onclick="generateCinePrompt()" class="flex-1 bg-amber-500 hover:bg-amber-400 text-zinc-950 font-extrabold py-3.5 px-6 rounded-2xl transition duration-150 flex items-center justify-center gap-2 shadow-lg shadow-amber-500/20 text-sm sm:text-base">
+        <span>توليد البرومبت السينمائي</span>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+      </button>
+      <button onclick="clearAll()" class="px-5 py-3.5 rounded-2xl bg-zinc-800 hover:bg-zinc-700 text-zinc-300 text-sm font-semibold transition">
+        مسح
+      </button>
+    </div>
+
+    <!-- منطقة النتائج -->
+    <div id="outputArea" class="hidden space-y-4 pt-4 border-t border-zinc-800">
+      
+      <!-- الصندوق 1: البرومبت الإنجليزي لنماذج الفيديو والـ AI -->
+      <div class="bg-zinc-950 border border-zinc-800 rounded-2xl p-4">
+        <div class="flex items-center justify-between mb-2">
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+            <span class="text-xs font-bold text-zinc-300">الأمر السينمائي الإنجليزي (للصق المباشر في Sora / Runway / Midjourney):</span>
+          </div>
+          <button id="copyEngBtn" onclick="copyText('engResult', 'copyEngBtn')" class="text-xs px-3 py-1 bg-zinc-800 hover:bg-zinc-700 text-amber-400 rounded-lg transition font-semibold">
+            نسخ الأمر الإنجليزي
+          </button>
+        </div>
+        <pre id="engResult" class="mono text-xs sm:text-sm text-amber-200/90 whitespace-pre-wrap break-words leading-relaxed select-all"></pre>
+      </div>
+
+      <!-- الصندوق 2: بطاقة الإخراج والتوجيه بالعربية -->
+      <div class="bg-zinc-950 border border-zinc-800 rounded-2xl p-4">
+        <div class="flex items-center justify-between mb-2">
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-blue-400"></span>
+            <span class="text-xs font-bold text-zinc-300">مذكرة التوجيه الإخراجي (Director's Shot Card):</span>
+          </div>
+          <button id="copyArBtn" onclick="copyText('arResult', 'copyArBtn')" class="text-xs px-3 py-1 bg-zinc-800 hover:bg-zinc-700 text-zinc-200 rounded-lg transition font-semibold">
+            نسخ المذكرة
+          </button>
+        </div>
+        <pre id="arResult" class="text-xs sm:text-sm text-zinc-300 whitespace-pre-wrap break-words leading-relaxed select-all"></pre>
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer class="mt-8 text-center text-xs text-zinc-500">
+    مهندس خصيصاً لأفلام Runway Gen-3 • OpenAI Sora • Kling AI • Midjourney v6
+  </footer>
+
+  <script>
+    function generateCinePrompt() {
+      const idea = document.getElementById('sceneIdea').value.trim();
+      if (!idea) {
+        alert('يرجى كتابة فكرة المشهد أولاً.');
+        document.getElementById('sceneIdea').focus();
+        return;
+      }
+
+      const shot = document.getElementById('shotType').value;
+      const move = document.getElementById('cameraMove').value;
+      const light = document.getElementById('lighting').value;
+      const lens = document.getElementById('lensType').value;
+      const color = document.getElementById('colorGrade').value;
+      const aspect = document.getElementById('aspectRatio').value;
+      const antiMorph = document.getElementById('antiMorph').checked;
+
+      // بناء البرومبت الإنجليزي الدقيق
+      let negativeConstraints = antiMorph ? ", photorealistic 8k, cinematic masterpiece, highly coherent temporal consistency, zero motion blur distortion, no floating artifacts, realistic physics --no CGI look, plastic skin, distorted limbs, warping" : "";
+
+      const englishPrompt = `Cinematic Film Still: ${idea}. ${shot}, ${move}. Lit with ${light}. ${lens}. Color graded in ${color}, realistic environmental atmosphere, masterpiece cinematography, ultra-detailed textures, motion picture aesthetics, ${aspect}${negativeConstraints}`;
+
+      // بناء مذكرة المشهد بالعربية
+      const arabicCard = `🎬 [بطاقة المشهد السينمائي]:
+• موضوع المشهد: ${idea}
+• تكوين الكادر والزاوية: ${document.getElementById('shotType').options[document.getElementById('shotType').selectedIndex].text}
+• حركة الكاميرا: ${document.getElementById('cameraMove').options[document.getElementById('cameraMove').selectedIndex].text}
+• هندسة الإضاءة: ${document.getElementById('lighting').options[document.getElementById('lighting').selectedIndex].text}
+• العدسة والعمق: ${document.getElementById('lensType').options[document.getElementById('lensType').selectedIndex].text}
+• الطابع اللوني: ${document.getElementById('colorGrade').options[document.getElementById('colorGrade').selectedIndex].text}
+• النسبة والأبعاد: ${document.getElementById('aspectRatio').options[document.getElementById('aspectRatio').selectedIndex].text}`;
+
+      document.getElementById('engResult').textContent = englishPrompt;
+      document.getElementById('arResult').textContent = arabicCard;
+      document.getElementById('outputArea').classList.remove('hidden');
+      document.getElementById('outputArea').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function copyText(elementId, btnId) {
+      const text = document.getElementById(elementId).textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.getElementById(btnId);
+        const originalText = btn.textContent;
+        btn.textContent = 'تم النسخ ✓';
+        btn.classList.add('text-emerald-400');
+        setTimeout(() => {
+          btn.textContent = originalText;
+          btn.classList.remove('text-emerald-400');
+        }, 2000);
+      });
+    }
+
+    function clearAll() {
+      document.getElementById('sceneIdea').value = '';
+      document.getElementById('outputArea').classList.add('hidden');
+    }
+  </script>
+</body>
+</html>
