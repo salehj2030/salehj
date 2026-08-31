@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>مُوَلِّد الأغاني والموسيقى الشرقية والخليجية | OrientalSong AI</title>
+  <title>مُوَلِّد الموسيقى العربية والخليجية | TarabPrompt AI</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,87 +17,97 @@
 
   <header class="max-w-4xl w-full text-center mb-8">
     <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold mb-3 tracking-wide">
-      🪕 استوديو التوزيع والتلحين بالذكاء الاصطناعي | من النص إلى اللحن
+      🎵 هندسة الأوامر الصوتية والشرقية | Suno v3.5/v4 & Udio Ready
     </div>
     <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-2">
-      مُوَلِّد الأغاني والموسيقى الشرقية
+      صانع برومبتات الموسيقى والأغاني العربية
     </h1>
     <p class="text-zinc-400 text-sm sm:text-base max-w-2xl mx-auto">
-      ضع كلماتك أو قصيدتك لتحويلها إلى برومبت تلحين وتوزيع متكامل بآلات التخت الشرقي والإيقاعات الخليجية لنماذج Suno و Udio.
+      توليد أوامر موسيقية احترافية بالآلات الشرقية، الإيقاعات الخليجية، والمقامات مع هندسة وسوم المقاطع الصوتية (Metatags).
     </p>
   </header>
 
   <main class="max-w-4xl w-full bg-zinc-900 border border-zinc-800 rounded-3xl p-6 sm:p-10 shadow-2xl space-y-6">
     
-    <div>
-      <label for="lyricsText" class="block text-sm font-bold text-zinc-200 mb-2">
-        1. الكلمات أو الأبيات الشعرية المرفقة <span class="text-emerald-400">*</span>
-      </label>
-      <textarea id="lyricsText" rows="5" placeholder="الصق هنا كلمات الأغنية أو أبيات القصيدة (فصحى، نبطي، خليجي، شامي، مصري)..." class="w-full rounded-2xl bg-zinc-950 border border-zinc-800 px-4 py-3 text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition text-sm sm:text-base resize-none"></textarea>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div>
+        <label for="songTopic" class="block text-sm font-bold text-zinc-200 mb-2">
+          1. فكرة/موضوع العمل الغنائي <span class="text-emerald-400">*</span>
+        </label>
+        <textarea id="songTopic" rows="4" placeholder="مثال: شيلة فخر وحماسة وطنية، أو أغنية طربية حزينة عن الشوق والذكريات..." class="w-full rounded-2xl bg-zinc-950 border border-zinc-800 px-4 py-3 text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition text-sm resize-none"></textarea>
+      </div>
+
+      <div>
+        <label for="lyricsInput" class="block text-sm font-bold text-zinc-200 mb-2">
+          2. كلمات الأغنية (اختياري - يترك فارغاً للتوليد الآلي)
+        </label>
+        <textarea id="lyricsInput" rows="4" placeholder="أدخل الأبيات هنا إن وُجدت، أو اتركها لإنشاء هيكل موسيقي متكامل..." class="w-full rounded-2xl bg-zinc-950 border border-zinc-800 px-4 py-3 text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition text-sm resize-none"></textarea>
+      </div>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
       
       <div>
-        <label for="orientalGenre" class="block text-xs font-bold text-zinc-300 mb-1.5">🎼 اللون الغنائي والطابع</label>
-        <select id="orientalGenre" class="w-full rounded-xl bg-zinc-950 border border-zinc-800 px-3 py-2.5 text-xs sm:text-sm text-zinc-200 focus:outline-none focus:border-emerald-500">
-          <option value="Khaleeji Tarab, Soulful Gulf Acoustic Ballad, emotional vocal delivery">طرب خليجي وجداني أصيل</option>
-          <option value="Saudi Sheela, High Energy Traditional Folk, Bedouin pride, rapid delivery">شيلة سعودية حماسية سريعة</option>
-          <option value="Classical Arabesque Tarab, Orchestral Andalusian Muwashah style">طرب كلاسيكي وتخت شرقي أصيل</option>
-          <option value="Modern Arabic Pop with traditional oriental strings and percussions">بوب عربي معاصر بتوزيع شرقي</option>
-          <option value="Iraqi Mawal and Chobi, melancholic soulful vocal, intense rhythmic drive">موال ومقام عراقي شجي (طابع شوبي)</option>
-          <option value="Levantine Dabke and Folk, lively celebrations and energetic flute">دبكة وفلكلور شامي حركي</option>
+        <label for="genreStyle" class="block text-xs font-bold text-zinc-300 mb-1.5">🎼 النمط واللون الموسيقي</label>
+        <select id="genreStyle" class="w-full rounded-xl bg-zinc-950 border border-zinc-800 px-3 py-2.5 text-xs sm:text-sm text-zinc-200 focus:outline-none focus:border-emerald-500">
+          <option value="Khaleeji Tarab, Authentic Gulf Ballad">طرب خليجي كلاسيكي أصيل</option>
+          <option value="Saudi Sheela, High Energy Traditional Folk, Bedouin rhythm">شيلة سعودية حماسية سريعة</option>
+          <option value="Modern Arabic Pop with traditional oriental orchestration">بوب عربي معاصر بتوزيع شرقي</option>
+          <option value="Classical Andalusian Muwashahat, Orchestral Arabic Tarab">موشحات أندلسية وتخت شرقي</option>
+          <option value="Iraqi Chobi, Melancholic Mawal with intense rhythm">مقام وموال عراقي وطابع شوبي</option>
+          <option value="Levantine Dabke, vibrant fast-paced folk beats">دبكة شامية وإيقاع حيوي</option>
         </select>
       </div>
 
       <div>
-        <label for="leadInstruments" class="block text-xs font-bold text-zinc-300 mb-1.5">🪕 الآلات الشرقية والصولوهات</label>
+        <label for="rhythmStyle" class="block text-xs font-bold text-zinc-300 mb-1.5">🥁 الإيقاع والميزان (Rhythm)</label>
+        <select id="rhythmStyle" class="w-full rounded-xl bg-zinc-950 border border-zinc-800 px-3 py-2.5 text-xs sm:text-sm text-zinc-200 focus:outline-none focus:border-emerald-500">
+          <option value="Khabiti fast energetic rhythm with clapping and Mirwas">إيقاع خبيتي مع تصفيق ومرواس</option>
+          <option value="Dawsari heavy Gulf percussion with deep Dafoof">إيقاع دوسري ثقيل بالدفوف</option>
+          <option value="Slow Wahda Kabira tarab tempo, emotional groove">إيقاع واحدة كبيرة (طربي هادئ)</option>
+          <option value="Malfouf fast 2/4 rhythm, dynamic live percussion">إيقاع ملفوف سريع وحيوي</option>
+          <option value="Maqsum versatile classical Arabic beat">إيقاع مقسوم كلاسيكي</option>
+          <option value="Samri traditional soulful Gulf acoustic beat">إيقاع سامري وجداني</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="leadInstruments" class="block text-xs font-bold text-zinc-300 mb-1.5">🪕 الآلات الموسيقية المنفردة</label>
         <select id="leadInstruments" class="w-full rounded-xl bg-zinc-950 border border-zinc-800 px-3 py-2.5 text-xs sm:text-sm text-zinc-200 focus:outline-none focus:border-emerald-500">
-          <option value="Virtuoso acoustic Oud solos, expressive master Qanun runs, airy soulful Nay">تخت شرقي كامل (عود أصيل + صولو قانون + ناي شجي)</option>
-          <option value="Prominent Oriental Violin ensemble (Kamanjat), expressive emotional Nay leads">أوركسترا كمنجات شرقية واسعة مع صولو ناي</option>
-          <option value="Electric Oud fused with modern sub-bass, traditional acoustic Darbuka">عود كهربائي مع بيس حديث وطبلة شرقية</option>
-          <option value="Traditional Mizmar, layered handclaps, deep Bedouin drums">مزمار شعبي ودفوف وتصفيق جماعي</option>
-          <option value="Solo acoustic Oud with subtle ambient atmospheric string pads">عود منفرد مع خلفية وترية هادئة</option>
+          <option value="Virtuoso acoustic Oud, master Qanun solos, soulful Nay">تخت شرقي (عود نقي، صولو قانون، ناي شجي)</option>
+          <option value="Electric Oud, modern synths, powerful traditional Darbuka">عود كهربائي مدمج مع درامز وسينث</option>
+          <option value="Prominent Violin section (Kamanjat), expressive Nay leads">صولوهات كمنجات شرقية واسعة مع ناي</option>
+          <option value="Mizmar, traditional drums, layered handclaps">مزمار شعبي، دفوف حية، وتصفيق جماعي</option>
+          <option value="Solo acoustic Oud and minimal atmospheric ambient pads">عود منفرد مع خلفية صوتية حالمة</option>
         </select>
       </div>
 
       <div>
-        <label for="arabicRhythm" class="block text-xs font-bold text-zinc-300 mb-1.5">🥁 الإيقاع والميزان (Rhythm & Percussion)</label>
-        <select id="arabicRhythm" class="w-full rounded-xl bg-zinc-950 border border-zinc-800 px-3 py-2.5 text-xs sm:text-sm text-zinc-200 focus:outline-none focus:border-emerald-500">
-          <option value="Khabiti rhythm, rapid dynamic Gulf percussion with layered rhythmic handclaps">إيقاع خبيتي سريع مع تصفيق مرواس</option>
-          <option value="Dawsari heavy Gulf beat, powerful Dafoof and deep bass resonance">إيقاع دوسري ثقيل ودفوف عميقة</option>
-          <option value="Samri traditional soulful Gulf tempo, steady authentic groove">إيقاع سامري وجداني هادئ</option>
-          <option value="Classical Maqsum and Wahda Kabira 4/4 tarab groove with acoustic Riqq and Darbuka">إيقاع مقسوم وواحدة كبيرة مع رق ودربكة</option>
-          <option value="Malfouf fast 2/4 dynamic energetic dance rhythm">إيقاع ملفوف 2/4 حيوي وحماسي</option>
-          <option value="Slow atmospheric free-time Taqsim transition into steady rhythm">تقسيم حر بطيء يتصاعد إلى إيقاع منتظم</option>
-        </select>
-      </div>
-
-      <div>
-        <label for="vocalStyle" class="block text-xs font-bold text-zinc-300 mb-1.5">🎙️ خامة الصوت والأداء الغنائي</label>
+        <label for="vocalStyle" class="block text-xs font-bold text-zinc-300 mb-1.5">🎙️ خامة الصوت والأداء</label>
         <select id="vocalStyle" class="w-full rounded-xl bg-zinc-950 border border-zinc-800 px-3 py-2.5 text-xs sm:text-sm text-zinc-200 focus:outline-none focus:border-emerald-500">
-          <option value="Deep emotive male Gulf vocalist, authentic warm resonance, pristine dialect pronunciation">صوت رجالي خليجي رخيم ومشاعر طربية</option>
-          <option value="Powerful expressive female Arab singer, wide dynamic vocal range, rich vibrato">صوت نسائي شرقي متمكن وواسع المساحة</option>
-          <option value="Resonant Bedouin male voice, spirited Sheela intonation, passionate delivery">صوت شيلة بدوي جهوري وعالي النبرة</option>
-          <option value="Harmonious male and female vocal duet with rich choral backing responses">ديو غنائي متناغم مع ردات كورال</option>
+          <option value="Warm emotive male Gulf Tarab vocal, deep resonance, authentic dialect">صوت رجالي خليجي دافئ بنبرة طربية</option>
+          <option value="Powerful expressive female Arab vocalist with wide vocal range">صوت نسائي شرقي قوي وواسع المساحة</option>
+          <option value="Traditional male Bedouin vocalist, passionate Sheela delivery">صوت شيلة بدوي جهوري وعالي الحماسة</option>
+          <option value="Lyrical acoustic vocal duo, intimate harmony">ديو غنائي متناغم وهادئ</option>
+          <option value="Male and female choral backing with traditional responsorial chanting">كورال جماعي شرقي ونظام الردة</option>
         </select>
       </div>
 
       <div>
-        <label for="tempoBpm" class="block text-xs font-bold text-zinc-300 mb-1.5">⏱️ سرعة الإيقاع (BPM)</label>
-        <select id="tempoBpm" class="w-full rounded-xl bg-zinc-950 border border-zinc-800 px-3 py-2.5 text-xs sm:text-sm text-zinc-200 focus:outline-none focus:border-emerald-500">
+        <label for="mixQuality" class="block text-xs font-bold text-zinc-300 mb-1.5">🎛️ هندسة الصوت والإنتاج</label>
+        <select id="mixQuality" class="w-full rounded-xl bg-zinc-950 border border-zinc-800 px-3 py-2.5 text-xs sm:text-sm text-zinc-200 focus:outline-none focus:border-emerald-500">
+          <option value="Pristine studio master, analog warmth, high dynamic range, stereo acoustics">ماستر استوديو تناظري نقي ودافئ (Pristine Studio Master)</option>
+          <option value="Live concert acoustics, natural reverb, dynamic hall presence">تسجيل حي (مسرح وحفلة طربية مع صدى طبيعي)</option>
+          <option value="Polished modern commercial radio master, punchy bass, crisp highs">مكس تجاري معاصر، بيس قوي ووضوح فائق</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="bpmTempo" class="block text-xs font-bold text-zinc-300 mb-1.5">⏱️ سرعة العمل (BPM / Tempo)</label>
+        <select id="bpmTempo" class="w-full rounded-xl bg-zinc-950 border border-zinc-800 px-3 py-2.5 text-xs sm:text-sm text-zinc-200 focus:outline-none focus:border-emerald-500">
           <option value="Moderate tempo (85-95 BPM), steady emotional groove">متوسط طربي (85-95 BPM)</option>
-          <option value="Upbeat high energy tempo (115-130 BPM), lively rhythmic pulse">سريع حماسي راقص (115-130 BPM)</option>
-          <option value="Slow tarab ballad tempo (65-75 BPM), deep microtonal expression">بطيء شجي ووجداني (65-75 BPM)</option>
-        </select>
-      </div>
-
-      <div>
-        <label for="productionMix" class="block text-xs font-bold text-zinc-300 mb-1.5">🎛️ جودة المكس وهندسة الماستر</label>
-        <select id="productionMix" class="w-full rounded-xl bg-zinc-950 border border-zinc-800 px-3 py-2.5 text-xs sm:text-sm text-zinc-200 focus:outline-none focus:border-emerald-500">
-          <option value="High-end studio recording, pristine analog warmth, wide stereo field, crisp acoustic separation">ماستر استوديو تناظري نقي وعريض (Studio Master)</option>
-          <option value="Authentic live concert hall acoustics, lush natural reverberation, rich stage ambiance">تسجيل حفلة ومسرح حي مع صدى طبيعي</option>
-          <option value="Modern commercial radio production, punchy dynamic low-end, sparkling clarity">مكس تجاري معاصر، وضوح فائق وبيس قوي</option>
+          <option value="Upbeat and fast tempo (115-130 BPM), danceable pulse">سريع حماسي راقص (115-130 BPM)</option>
+          <option value="Slow melancholic ballad (65-75 BPM), deep resonance">بطيء شجي ووجداني (65-75 BPM)</option>
         </select>
       </div>
 
@@ -105,47 +115,47 @@
 
     <div class="p-3 bg-zinc-950 border border-zinc-800/80 rounded-xl">
       <label class="inline-flex items-center gap-2 cursor-pointer text-xs text-zinc-300 font-medium">
-        <input type="checkbox" id="antiNoiseCheck" checked class="w-4 h-4 rounded bg-zinc-900 border-zinc-700 text-emerald-500 focus:ring-emerald-400">
-        <span>تضمين وسوم نقاء الآلات الحقيقية ومنع التشويش أو الأصوات الآلية الرديئة (Anti-Robotic & Authentic Maqam Tuning)</span>
+        <input type="checkbox" id="proAudioTag" checked class="w-4 h-4 rounded bg-zinc-900 border-zinc-700 text-emerald-500 focus:ring-emerald-400">
+        <span>تضمين وسوم منع التشويش الصوتي والآلات الاصطناعية الرديئة (Anti-Noise & Real Instruments Metatags)</span>
       </label>
     </div>
 
     <div class="flex gap-3">
-      <button onclick="generateOrientalSongPrompt()" class="flex-1 bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-extrabold py-3.5 px-6 rounded-2xl transition duration-150 flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20 text-sm sm:text-base">
-        <span>توليد وتوزيع البرومبت الموسيقي</span>
+      <button onclick="generateMusicPrompt()" class="flex-1 bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-extrabold py-3.5 px-6 rounded-2xl transition duration-150 flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20 text-sm sm:text-base">
+        <span>توليد البرومبت الموسيقي</span>
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"/></svg>
       </button>
-      <button onclick="clearLyricsFields()" class="px-5 py-3.5 rounded-2xl bg-zinc-800 hover:bg-zinc-700 text-zinc-300 text-sm font-semibold transition">
+      <button onclick="clearMusicAll()" class="px-5 py-3.5 rounded-2xl bg-zinc-800 hover:bg-zinc-700 text-zinc-300 text-sm font-semibold transition">
         مسح
       </button>
     </div>
 
-    <div id="songOutputArea" class="hidden space-y-4 pt-4 border-t border-zinc-800">
+    <div id="musicOutputArea" class="hidden space-y-4 pt-4 border-t border-zinc-800">
       
       <div class="bg-zinc-950 border border-zinc-800 rounded-2xl p-4">
         <div class="flex items-center justify-between mb-2">
           <div class="flex items-center gap-2">
             <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
-            <span class="text-xs font-bold text-zinc-300">1. أمر النمط الموسيقي (Style of Music Box في Suno / Udio):</span>
+            <span class="text-xs font-bold text-zinc-300">أمر النمط الموسيقي (Style Box في Suno / Udio):</span>
           </div>
-          <button id="copyStyleOnlyBtn" onclick="copySnippetText('styleSnippet', 'copyStyleOnlyBtn')" class="text-xs px-3 py-1 bg-zinc-800 hover:bg-zinc-700 text-emerald-400 rounded-lg transition font-semibold">
+          <button id="copyStyleBtn" onclick="copySnippet('styleResult', 'copyStyleBtn')" class="text-xs px-3 py-1 bg-zinc-800 hover:bg-zinc-700 text-emerald-400 rounded-lg transition font-semibold">
             نسخ النمط
           </button>
         </div>
-        <pre id="styleSnippet" class="mono text-xs sm:text-sm text-emerald-200/90 whitespace-pre-wrap break-words leading-relaxed select-all"></pre>
+        <pre id="styleResult" class="mono text-xs sm:text-sm text-emerald-200/90 whitespace-pre-wrap break-words leading-relaxed select-all"></pre>
       </div>
 
       <div class="bg-zinc-950 border border-zinc-800 rounded-2xl p-4">
         <div class="flex items-center justify-between mb-2">
           <div class="flex items-center gap-2">
             <span class="w-2.5 h-2.5 rounded-full bg-cyan-400"></span>
-            <span class="text-xs font-bold text-zinc-300">2. الكلمات مع وسوم المقاطع الصوتية (Lyrics & Structure Box):</span>
+            <span class="text-xs font-bold text-zinc-300">هيكل الأغنية ووسوم المقاطع (Lyrics Box):</span>
           </div>
-          <button id="copyLyricsOnlyBtn" onclick="copySnippetText('lyricsSnippet', 'copyLyricsOnlyBtn')" class="text-xs px-3 py-1 bg-zinc-800 hover:bg-zinc-700 text-cyan-300 rounded-lg transition font-semibold">
-            نسخ الكلمات المهيكلة
+          <button id="copyLyricsBtn" onclick="copySnippet('lyricsResult', 'copyLyricsBtn')" class="text-xs px-3 py-1 bg-zinc-800 hover:bg-zinc-700 text-cyan-300 rounded-lg transition font-semibold">
+            نسخ هيكل الأغنية
           </button>
         </div>
-        <pre id="lyricsSnippet" class="mono text-xs sm:text-sm text-zinc-300 whitespace-pre-wrap break-words leading-relaxed select-all"></pre>
+        <pre id="lyricsResult" class="mono text-xs sm:text-sm text-zinc-300 whitespace-pre-wrap break-words leading-relaxed select-all"></pre>
       </div>
 
     </div>
@@ -153,61 +163,54 @@
   </main>
 
   <footer class="mt-8 text-center text-xs text-zinc-500">
-    مهندس خصيصاً للشعراء، الملحنين، وصناع المحتوى الصوتي | يدعم Suno v3.5 / v4 و Udio AI
+    متوافق تماماً مع Suno AI v3.5 / v4 • Udio AI • Stable Audio
   </footer>
 
   <script>
-    function generateOrientalSongPrompt() {
-      const lyrics = document.getElementById('lyricsText').value.trim();
-      if (!lyrics) {
-        alert('يرجى إدخال كلمات الأغنية أو القصيدة أولاً.');
-        document.getElementById('lyricsText').focus();
+    function generateMusicPrompt() {
+      const topic = document.getElementById('songTopic').value.trim();
+      const userLyrics = document.getElementById('lyricsInput').value.trim();
+
+      if (!topic && !userLyrics) {
+        alert('يرجى كتابة فكرة العمل أو وضع كلمات الأغنية أولاً.');
+        document.getElementById('songTopic').focus();
         return;
       }
 
-      const genre = document.getElementById('orientalGenre').value;
+      const genre = document.getElementById('genreStyle').value;
+      const rhythm = document.getElementById('rhythmStyle').value;
       const instruments = document.getElementById('leadInstruments').value;
-      const rhythm = document.getElementById('arabicRhythm').value;
       const vocal = document.getElementById('vocalStyle').value;
-      const tempo = document.getElementById('tempoBpm').value;
-      const mix = document.getElementById('productionMix').value;
-      const antiNoise = document.getElementById('antiNoiseCheck').checked;
+      const mix = document.getElementById('mixQuality').value;
+      const bpm = document.getElementById('bpmTempo').value;
+      const proAudio = document.getElementById('proAudioTag').checked;
 
-      // 1. بناء برومبت النمط الموسيقي الدقيق (Style Box)
-      let stylePrompt = `${genre}, ${instruments}, ${rhythm}, ${vocal}, ${tempo}, ${mix}`;
-      if (antiNoise) {
-        stylePrompt += `, authentic microtonal Arabic Maqam intonation, pure acoustic warmth, rich harmonic resonance, high fidelity stereo, no electronic autotune glitches, no synthetic distortion`;
+      // 1. بناء حقل النمط الصوتي (Style Prompt)
+      let stylePrompt = `${genre}, ${rhythm}, ${instruments}, ${vocal}, ${bpm}, ${mix}`;
+      if (proAudio) {
+        stylePrompt += `, authentic acoustic microtonal intonation, expressive maqam transitions, crisp high-definition recording, wide stereo soundstage, no robotic artifacts, rich harmonic resonance`;
       }
 
-      // 2. تقسيم الكلمات آلياً وتضمين وسوم التوزيع والميتاتاجز (Lyrics Metatags)
-      const lines = lyrics.split('\n').map(l => l.trim()).filter(l => l.length > 0);
+      // 2. بناء هيكل الميتاتاجز والأبيات (Structure & Lyrics Box)
       let structuredLyrics = '';
-
-      if (lines.length <= 4) {
-        // نص قصير
-        structuredLyrics = `[Intro: Instrumental Taqsim on Oud and Nay]\n[Percussion Entry: ${rhythm.split(',')[0]}]\n\n[Verse]\n${lines.join('\n')}\n\n[Chorus: Harmonized Vocal with Full Strings & Clapping]\n${lines.slice(0, 2).join('\n')}\n\n[Solo: Master Qanun Interlude]\n\n[Outro: Emotional Vocal Fade with Solo Nay]\n[End]`;
+      if (userLyrics) {
+        structuredLyrics = `[Intro: Instrumental Taqsim on Oud and Nay]\n[Rhythm Build-Up: ${rhythm.split(',')[0]}]\n\n[Verse 1]\n${userLyrics}\n\n[Chorus: Full Arabesque Orchestration & Layered Claps]\n[Instrumental Solo: Virtuoso Qanun & Violin Interlude]\n\n[Outro: Slow Fade Out with Solo Nay]\n[End]`;
       } else {
-        // نص طويل ومفصل
-        const half = Math.ceil(lines.length / 2);
-        const verse1 = lines.slice(0, half).join('\n');
-        const verse2 = lines.slice(half).join('\n');
-        const chorusLines = lines.slice(0, Math.min(2, lines.length)).join('\n');
-
-        structuredLyrics = `[Intro: Instrumental Taqsim on Solo Oud with Atmospheric Nay]\n[Rhythm Build-Up: ${rhythm.split(',')[0]}]\n\n[Verse 1]\n${verse1}\n\n[Chorus: Full Orchestration & Layered Arabesque Strings]\n${chorusLines}\n\n[Instrumental Break: Virtuoso Qanun and Nay Dialogue]\n\n[Verse 2: Rising Dynamic Energy]\n${verse2}\n\n[Chorus: Climax with Full Choral Backing & Traditional Percussion]\n${chorusLines}\n\n[Outro: Slow Cadence on Acoustic Oud and Soft Ambient Reverb]\n[Fade Out]\n[End]`;
+        structuredLyrics = `[Intro: Solo Oud Taqsim with atmospheric Nay]\n[Theme: ${topic}]\n[Percussion Entry: ${rhythm.split(',')[0]}]\n\n[Verse 1]\n(اكتب المقطع الأول هنا متناسقاً مع لحن العود)\n\n[Chorus: Harmonized Vocal & Rich String Ensemble]\n(المذهب / اللازمة الرئيسية المتكررة)\n\n[Instrumental Solo: Emotional Qanun & Nay Dialogue]\n\n[Verse 2]\n(المقطع الثاني - تصاعد تدريجي في الإيقاع)\n\n[Chorus: Full Energy Orchestration]\n(تكرار اللازمة مع الكورال والتصفيق)\n\n[Outro: Accelerando & Grand Final Cadence]\n[End]`;
       }
 
-      document.getElementById('styleSnippet').textContent = stylePrompt;
-      document.getElementById('lyricsSnippet').textContent = structuredLyrics;
-      document.getElementById('songOutputArea').classList.remove('hidden');
-      document.getElementById('songOutputArea').scrollIntoView({ behavior: 'smooth' });
+      document.getElementById('styleResult').textContent = stylePrompt;
+      document.getElementById('lyricsResult').textContent = structuredLyrics;
+      document.getElementById('musicOutputArea').classList.remove('hidden');
+      document.getElementById('musicOutputArea').scrollIntoView({ behavior: 'smooth' });
     }
 
-    function copySnippetText(elementId, btnId) {
+    function copySnippet(elementId, btnId) {
       const text = document.getElementById(elementId).textContent;
       navigator.clipboard.writeText(text).then(() => {
         const btn = document.getElementById(btnId);
         const originalText = btn.textContent;
-        btn.textContent = 'تم النسخ بنجاح ✓';
+        btn.textContent = 'تم النسخ ✓';
         btn.classList.add('text-emerald-400');
         setTimeout(() => {
           btn.textContent = originalText;
@@ -216,9 +219,10 @@
       });
     }
 
-    function clearLyricsFields() {
-      document.getElementById('lyricsText').value = '';
-      document.getElementById('songOutputArea').classList.add('hidden');
+    function clearMusicAll() {
+      document.getElementById('songTopic').value = '';
+      document.getElementById('lyricsInput').value = '';
+      document.getElementById('musicOutputArea').classList.add('hidden');
     }
   </script>
 </body>
