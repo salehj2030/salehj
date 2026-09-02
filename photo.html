@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مُوَلِّد أوامر الصور والتعديل والدمج | ImageStudio AI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Tajawal', sans-serif; }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+  </style>
+</head>
+<body class="bg-zinc-950 text-zinc-100 min-h-screen p-4 sm:p-8 flex flex-col items-center">
+
+  <!-- الهيدر -->
+  <header class="max-w-4xl w-full text-center mb-8">
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-violet-500/10 border border-violet-500/20 text-violet-400 text-xs font-bold mb-3 tracking-wide">
+      🎨 استوديو التوليد والتعديل والمزج البصري | Midjourney • Flux • SDXL • DALL-E 3
+    </div>
+    <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-2">
+      صانع برومبتات توليد وتعديل ودمج الصور
+    </h1>
+    <p class="text-zinc-400 text-sm sm:text-base max-w-2xl mx-auto">
+      توليد أوامر بصرية فائقة الدقة لتصميم مشهد جديد، تعديل جزء محدد، أو دمج صورتين بتناغم إضاءة وفيزياء واقعية بدون أخطاء.
+    </p>
+  </header>
+
+  <!-- جسم الأداة -->
+  <main class="max-w-4xl w-full bg-zinc-900 border border-zinc-800 rounded-3xl p-6 sm:p-10 shadow-2xl space-y-6">
+    
+    <!-- اختيار نوع العملية البصرية -->
+    <div>
+      <label class="block text-sm font-bold text-zinc-200 mb-2">1. حدد نوع العملية البصرية المطلوبة <span class="text-violet-400">*</span></label>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        <label class="flex items-center gap-3 p-3.5 rounded-2xl bg-zinc-950 border border-zinc-800 cursor-pointer hover:border-violet-500/50 transition has-[:checked]:border-violet-500 has-[:checked]:bg-violet-950/20">
+          <input type="radio" name="operationType" value="create" checked onchange="toggleOperationMode()" class="w-4 h-4 text-violet-500">
+          <span class="text-xs sm:text-sm font-bold text-zinc-200">صناعة صورة جديدة</span>
+        </label>
+        <label class="flex items-center gap-3 p-3.5 rounded-2xl bg-zinc-950 border border-zinc-800 cursor-pointer hover:border-violet-500/50 transition has-[:checked]:border-violet-500 has-[:checked]:bg-violet-950/20">
+          <input type="radio" name="operationType" value="edit" onchange="toggleOperationMode()" class="w-4 h-4 text-violet-500">
+          <span class="text-xs sm:text-sm font-bold text-zinc-200">تعديل واستبدال جزء (Edit)</span>
+        </label>
+        <label class="flex items-center gap-3 p-3.5 rounded-2xl bg-zinc-950 border border-zinc-800 cursor-pointer hover:border-violet-500/50 transition has-[:checked]:border-violet-500 has-[:checked]:bg-violet-950/20">
+          <input type="radio" name="operationType" value="blend" onchange="toggleOperationMode()" class="w-4 h-4 text-violet-500">
+          <span class="text-xs sm:text-sm font-bold text-zinc-200">دمج ومزج صورتين (Blend)</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- حقول الإدخال الديناميكية -->
+    <div id="createFields" class="space-y-2">
+      <label for="promptSubject" class="block text-sm font-bold text-zinc-200">وصف موضوع المشهد والعناصر الأساسية</label>
+      <textarea id="promptSubject" rows="3" placeholder="مثال: صقر عربي يقف على صخرة في قمة جبلية شاهقة وقت الضباب والغيوم تحته..." class="w-full rounded-2xl bg-zinc-950 border border-zinc-800 px-4 py-3 text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-violet-500 focus:ring-1 focus:ring-violet-500 transition text-sm resize-none"></textarea>
+    </div>
+
+    <div id="editFields" class="hidden space-y-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label for="originalImageDesc" class="block text-xs font-bold text-zinc-300 mb-1.5">وصف الصورة الأصلية أو الرابط</label>
+          <input type="text" id="originalImageDesc" placeholder="مثال: صورة شخص يجلس في مكتب هادئ..." class="w-full rounded-xl bg-zinc-950 border border-zinc-800 px-3 py-2.5 text-xs sm:text-sm text-zinc-200 focus:outline-none focus:border-violet-500">
+        </div>
+        <div>
+          <label for="editChange" class="block text-xs font-bold text-zinc-300 mb-1.5">التعديل المطلوب بدقة (Inpainting / Replace)</label>
+          <input type="text" id="editChange" placeholder="مثال: استبدال خلفية المكتب بإطلالة بانورامية ليلية لناطحات السحاب..." class="w-full rounded-xl bg-zinc-950 border border-zinc-800 px-3 py-2.5 text-xs sm:text-sm text-zinc-200 focus:outline-none focus:border-violet-500">
+        </div>
+      </div>
+    </div>
+
+    <div id="blendFields" class="hidden space-y-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label for="blendElementA" class="block text-xs font-bold text-zinc-300 mb-1.5">العنصر الأول (الهدف الأساسي / الشخصية / المجسم)</label>
+          <input type="text" id="blendElementA" placeholder="مثال: سيارة رياضية كلاسيكية حمراء موديل 1985..." class="w-full rounded-xl bg-zinc-950 border border-zinc-800 px-3 py-2.5 text-xs sm:text-sm text-zinc-200 focus:outline-none focus:border-violet-500">
+        </div>
+        <div>
+          <label for="blendElementB" class="block text-xs font-bold text-zinc-300 mb-1.5">العنصر الثاني (البيئة / النمط / الخلفية المدمجة)</label>
+          <input type="text" id="blendElementB" placeholder="مثال: طبيعة صحراوية خلابة في العلا مع صخور منحوتة..." class="w-full rounded-xl bg-zinc-950 border border-zinc-800 px-3 py-2.5 text-xs sm:text-sm text-zinc-200 focus:outline-none focus:border-violet-500">
+        </div>
+      </div>
+    </div>
+
+    <!-- شبكة الإعدادات التقنية والفنية -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+      
+      <!-- الأسلوب الفني -->
+      <div>
+        <label for="artStyle" class="block text-xs font-bold text-zinc-300 mb-1.5">🖼️ الأسلوب الفني (Art Style)</label>
+        <select id="artStyle" class="w-full rounded-xl bg-zinc-950 border border-zinc-800 px-3 py-2.5 text-xs sm:text-sm text-zinc-200 focus:outline-none focus:border-violet-500">
+          <option value="Hyper-realistic National Geographic photograph, authentic raw textures, zero digital gloss">تصوير فوتوغرافي واقعي نقي (Hyper-Realistic)</option>
+          <option value="Editorial fashion and portrait photography, studio strobe lighting, crisp clarity">تصوير بورتريه واستوديو احترافي</option>
+          <option value="Cinematic movie still, 35mm film grain, anamorphic depth, rich atmospheric storytelling">لقطة سينمائية (Cinematic 35mm Film)</option>
+          <option value="High-end 3D architectural render, Octane Render, Ray-tracing, pristine realism">ريندر ثلاثي الأبعاد معماري فائق</option>
+          <option value="Moody oil painting concept art, masterful expressive brushwork, fine art texture">فن تشكيلي زيتي ومفهومي (Concept Art)</option>
+        </select>
+      </div>
+
+      <!-- العدسة وزاوية الكاميرا -->
+      <div>
+        <label for="cameraLens" class="block text-xs font-bold text-zinc-300 mb-1.5">📷 العدسة وعمق الكادر</label>
+        <select id="cameraLens" class="w-full rounded-xl bg-zinc-950 border border-zinc-800 px-3 py-2.5 text-xs sm:text-sm text-zinc-200 focus:outline-none focus:border-violet-500">
+          <option value="Shot on 85mm f/1.4 lens, shallow depth of field, creamy smooth bokeh background">عدسة 85mm مع عزل خلفية ناعم (Bokeh)</option>
+          <option value="Shot on 35mm prime lens, natural human eye perspective, sharp edge-to-edge focus">عدسة 35mm بمنظور واقعي وطبيعي</option>
+          <option value="Ultra-wide 16mm lens, dramatic perspective distortion, sweeping environmental view">عدسة 16mm عريضة تبرز اتساع البيئة</option>
+          <option value="Macro 100mm lens, extreme micro-details, visible surface pores and fine fibers">عدسة ماكرو 100mm تبرز أدق التفاصيل</option>
+        </select>
+      </div>
+
+      <!-- نمط الإضاءة والجو المحيط -->
+      <div>
+        <label for="lightingStyle" class="block text-xs font-bold text-zinc-300 mb-1.5">💡 نوع الإضاءة وتوزيع الظلال</label>
+        <select id="lightingStyle" class="w-full rounded-xl bg-zinc-950 border border-zinc-800 px-3 py-2.5 text-xs sm:text-sm text-zinc-200 focus:outline-none focus:border-violet-500">
+          <option value="Warm golden hour natural side-lighting with soft elongated shadows">الساعة الذهبية وإضاءة جانبية دافئة</option>
+          <option value="Moody Chiaroscuro lighting, deep dramatic shadows, soft focused spotlight">تباين حاد وظلال عميقة (Chiaroscuro)</option>
+          <option value="Diffused overcast soft daylight, perfectly balanced illumination with zero harsh glare">ضوء غائم ناعم ومتوازن بدون وهج</option>
+          <option value="Cyberpunk neon rim lighting, dual-tone reflections, wet glossy floor contrast">إضاءة نيون ملونة مع انعكاسات مائية</option>
+        </select>
+      </div>
+
+      <!-- نسبة الأبعاد (Aspect Ratio) -->
+      <div>
+        <label for="aspectRatioVal" class="block text-xs font-bold text-zinc-300 mb-1.5">📐 نسبة أبعاد الصورة (Aspect Ratio)</label>
+        <select id="aspectRatioVal" class="w-full rounded-xl bg-zinc-950 border border-zinc-800 px-3 py-2.5 text-xs sm:text-sm text-zinc-200 focus:outline-none focus:border-violet-500">
+          <option value="--ar 16:9">عريض سينمائي للكمبيوتر واليوتيوب (16:9)</option>
+          <option value="--ar 9:16">طولي احترافي للجوال وستوري/ريلز (9:16)</option>
+          <option value="--ar 4:5">طولي لمنشورات إنستغرام وتويتر (4:5)</option>
+          <option value="--ar 1:1">مربع قياسي (1:1)</option>
+          <option value="--ar 21:9">بانورامي عريض فائق (21:9)</option>
+        </select>
+      </div>
+
+      <!-- محرك التوليد المستهدف -->
+      <div>
+        <label for="targetModel" class="block text-xs font-bold text-zinc-300 mb-1.5">🤖 النموذج المستهدف</label>
+        <select id="targetModel" class="w-full rounded-xl bg-zinc-950 border border-zinc-800 px-3 py-2.5 text-xs sm:text-sm text-zinc-200 focus:outline-none focus:border-violet-500">
+          <option value="Midjourney v6.1 / Flux.1 Pro (Master Quality)">Midjourney v6.1 / Flux.1</option>
+          <option value="Stable Diffusion XL (SDXL Cinematic)">Stable Diffusion XL</option>
+          <option value="OpenAI DALL-E 3 (High Prompt Adherence)">DALL-E 3</option>
+        </select>
+      </div>
+
+      <!-- تناسق الدمج وتوحيد الإضاءة -->
+      <div>
+        <label for="blendHarmony" class="block text-xs font-bold text-zinc-300 mb-1.5">✨ تناغم الدمج والتعديل</label>
+        <select id="blendHarmony" class="w-full rounded-xl bg-zinc-950 border border-zinc-800 px-3 py-2.5 text-xs sm:text-sm text-zinc-200 focus:outline-none focus:border-violet-500">
+          <option value="Seamless environmental integration, matched color temperature, realistic cast shadows and reflections">دمج فيزيائي كامل (تطابق الظلال والانعكاسات)</option>
+          <option value="Retain strict foreground subject identity while transforming context">تثبيت هوية وملامح العنصر مع تغيير المحيط</option>
+          <option value="Smooth artistic surreal blend with cohesive color grading">مزج سريالي فني بتدرج لوني موحد</option>
+        </select>
+      </div>
+
+    </div>
+
+    <!-- قيود الجودة ومنع التشوهات والهلوسة -->
+    <div class="p-3 bg-zinc-950 border border-zinc-800/80 rounded-xl">
+      <label class="inline-flex items-center gap-2 cursor-pointer text-xs text-zinc-300 font-medium">
+        <input type="checkbox" id="antiDeformCheck" checked class="w-4 h-4 rounded bg-zinc-900 border-zinc-700 text-violet-500 focus:ring-violet-400">
+        <span>تضمين معاملات منع تشوه الأصابع والوجوه والتراكيب البلاستيكية (Strict Negative Filters & Anatomical Coherence)</span>
+      </label>
+    </div>
+
+    <!-- أزرار التوليد -->
+    <div class="flex gap-3">
+      <button onclick="generateVisualPrompt()" class="flex-1 bg-violet-600 hover:bg-violet-500 text-white font-extrabold py-3.5 px-6 rounded-2xl transition duration-150 flex items-center justify-center gap-2 shadow-lg shadow-violet-600/20 text-sm sm:text-base">
+        <span>توليد البرومبت البصري</span>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+      </button>
+      <button onclick="clearVisualFields()" class="px-5 py-3.5 rounded-2xl bg-zinc-800 hover:bg-zinc-700 text-zinc-300 text-sm font-semibold transition">
+        مسح
+      </button>
+    </div>
+
+    <!-- منطقة النتائج -->
+    <div id="visualOutputArea" class="hidden space-y-4 pt-4 border-t border-zinc-800">
+      
+      <!-- الصندوق 1: البرومبت الإنجليزي المعياري -->
+      <div class="bg-zinc-950 border border-zinc-800 rounded-2xl p-4">
+        <div class="flex items-center justify-between mb-2">
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-violet-400"></span>
+            <span class="text-xs font-bold text-zinc-300">الأمر الإنجليزي المباشر (جاهز للصق في Midjourney / Flux / DALL-E):</span>
+          </div>
+          <button id="copyEngBtn" onclick="copySnippetText('engVisualResult', 'copyEngBtn')" class="text-xs px-3 py-1 bg-zinc-800 hover:bg-zinc-700 text-violet-400 rounded-lg transition font-semibold">
+            نسخ البرومبت
+          </button>
+        </div>
+        <pre id="engVisualResult" class="mono text-xs sm:text-sm text-violet-200/90 whitespace-pre-wrap break-words leading-relaxed select-all"></pre>
+      </div>
+
+      <!-- الصندوق 2: الأمر السلبي (Negative Prompt) لنماذج SDXL و Flux -->
+      <div class="bg-zinc-950 border border-zinc-800 rounded-2xl p-4">
+        <div class="flex items-center justify-between mb-2">
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-rose-400"></span>
+            <span class="text-xs font-bold text-zinc-300">الأمر السلبي لمنع العيوب (Negative Prompt - لخانة SDXL / Stable Diffusion):</span>
+          </div>
+          <button id="copyNegBtn" onclick="copySnippetText('negVisualResult', 'copyNegBtn')" class="text-xs px-3 py-1 bg-zinc-800 hover:bg-zinc-700 text-rose-400 rounded-lg transition font-semibold">
+            نسخ الأمر السلبي
+          </button>
+        </div>
+        <pre id="negVisualResult" class="mono text-xs sm:text-sm text-rose-200/90 whitespace-pre-wrap break-words leading-relaxed select-all"></pre>
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer class="mt-8 text-center text-xs text-zinc-500">
+    متوافق مع أحدث معايير هندسة الأوامر البصرية بدقة 100%
+  </footer>
+
+  <script>
+    function toggleOperationMode() {
+      const mode = document.querySelector('input[name="operationType"]:checked').value;
+      document.getElementById('createFields').classList.toggle('hidden', mode !== 'create');
+      document.getElementById('editFields').classList.toggle('hidden', mode !== 'edit');
+      document.getElementById('blendFields').classList.toggle('hidden', mode !== 'blend');
+    }
+
+    function generateVisualPrompt() {
+      const mode = document.querySelector('input[name="operationType"]:checked').value;
+      const style = document.getElementById('artStyle').value;
+      const lens = document.getElementById('cameraLens').value;
+      const lighting = document.getElementById('lightingStyle').value;
+      const ar = document.getElementById('aspectRatioVal').value;
+      const harmony = document.getElementById('blendHarmony').value;
+      const antiDeform = document.getElementById('antiDeformCheck').checked;
+
+      let mainCore = '';
+
+      if (mode === 'create') {
+        const subject = document.getElementById('promptSubject').value.trim();
+        if (!subject) {
+          alert('يرجى كتابة وصف الصورة المطلوب توليدها أولاً.');
+          document.getElementById('promptSubject').focus();
+          return;
+        }
+        mainCore = subject;
+      } else if (mode === 'edit') {
+        const orig = document.getElementById('originalImageDesc').value.trim();
+        const change = document.getElementById('editChange').value.trim();
+        if (!change) {
+          alert('يرجى تحديد التعديل المطلوب بدقة.');
+          document.getElementById('editChange').focus();
+          return;
+        }
+        mainCore = `Inpainting and seamless modification task: Starting from [${orig || 'Original Image'}], precisely replace and alter the following: [${change}]. Maintain original subject identity, ${harmony}`;
+      } else if (mode === 'blend') {
+        const elemA = document.getElementById('blendElementA').value.trim();
+        const elemB = document.getElementById('blendElementB').value.trim();
+        if (!elemA || !elemB) {
+          alert('يرجى إدخال وصفي العنصرين المراد دمجهما.');
+          return;
+        }
+        mainCore = `Multi-element visual composite blend: Seamlessly integrate [${elemA}] merged together with [${elemB}]. ${harmony}, unified spatial depth`;
+      }
+
+      // بناء البرومبت الإيجابي الرئيسي
+      let fullPrompt = `${mainCore}. Style: ${style}. ${lens}. Lighting setup: ${lighting}. Masterpiece cinematography, Hasselblad 8K photo quality, photorealistic rendering, hyper-detailed textures, volumetric depth ${ar}`;
+
+      // بناء البرومبت السلبي الصارم
+      let negativePrompt = antiDeform 
+        ? "blurry, deformed, bad anatomy, bad hands, extra limbs, missing fingers, mutated hands, plastic skin, distorted faces, unrealistic reflections, floating objects, low resolution, oversaturated, watermark, signature, draft, poorly drawn face, text, logo" 
+        : "blurry, low quality, watermark";
+
+      document.getElementById('engVisualResult').textContent = fullPrompt;
+      document.getElementById('negVisualResult').textContent = negativePrompt;
+      document.getElementById('visualOutputArea').classList.remove('hidden');
+      document.getElementById('visualOutputArea').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function copySnippetText(elementId, btnId) {
+      const text = document.getElementById(elementId).textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.getElementById(btnId);
+        const originalText = btn.textContent;
+        btn.textContent = 'تم النسخ بنجاح ✓';
+        btn.classList.add('text-emerald-400');
+        setTimeout(() => {
+          btn.textContent = originalText;
+          btn.classList.remove('text-emerald-400');
+        }, 2000);
+      });
+    }
+
+    function clearVisualFields() {
+      document.getElementById('promptSubject').value = '';
+      document.getElementById('originalImageDesc').value = '';
+      document.getElementById('editChange').value = '';
+      document.getElementById('blendElementA').value = '';
+      document.getElementById('blendElementB').value = '';
+      document.getElementById('visualOutputArea').classList.add('hidden');
+    }
+  </script>
+</body>
+</html>
