@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#1E3A8A">
+  <title>الجدول المدرسي الذكي - صالح جمعان الدبسي 2026</title>
+  <style>
+    :root {
+      --primary: #1E3A8A;
+      --secondary: #0284C7;
+      --bg: #F1F5F9;
+      --card-bg: #FFFFFF;
+      --border: #CBD5E1;
+      --table-border: #94A3B8;
+      --text: #0F172A;
+      --break-bg: #FEF3C7;
+      --break-border: #F59E0B;
+      --prayer-bg: #DCFCE7;
+      --prayer-border: #16A34A;
+      --activity-bg: #F3E8FF;
+      --activity-border: #A855F7;
+      --backup-bg: #FFEDD5;
+      --backup-border: #F97316;
+    }
+    * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Cairo', Tahoma, sans-serif; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--text); direction: rtl; overflow-x: hidden; }
+
+    header {
+      background: linear-gradient(135deg, #1E3A8A, #0F172A);
+      color: white;
+      padding: 6px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 46px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .header-title h1 { font-size: 15px; font-weight: 800; display: inline-block; letter-spacing: -0.3px; }
+    .header-title span { font-size: 11px; color: #93C5FD; margin-right: 8px; font-weight: 500; }
+
+    .header-actions { display: flex; gap: 6px; align-items: center; }
+    .btn-header {
+      background: rgba(255, 255, 255, 0.15);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 5px 12px;
+      border-radius: 6px;
+      font-size: 11.5px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-header:hover { background: rgba(255, 255, 255, 0.25); }
+
+    .top-panel { margin: 6px 10px; display: flex; flex-direction: column; gap: 4px; }
+    .teacher-badge-bar {
+      background: #FFFFFF;
+      border: 1px solid #BFDBFE;
+      border-radius: 8px;
+      padding: 5px 12px;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+    }
+    .t-item { color: #1E3A8A; font-weight: 800; }
+    .t-item span { color: #334155; font-weight: 600; }
+
+    .info-strip {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 5px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 11.5px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+    }
+    .today-name { font-weight: 900; color: #1E3A8A; font-size: 12.5px; }
+    .clock-live { font-weight: 900; color: #0284C7; font-size: 12px; }
+
+    .badges-scroll { display: flex; gap: 6px; align-items: center; }
+    .badge-pill {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 5px;
+      padding: 3px 8px;
+      font-size: 11px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .badge-pill.salary { border-right: 3px solid #10B981; }
+    .badge-pill.citizen { border-right: 3px solid #3B82F6; }
+    .badge-pill.housing { border-right: 3px solid #F59E0B; }
+    .badge-pill.exam { border-right: 3px solid #EC4899; background: #FDF2F8; }
+    .badge-pill.occasion { border-right: 3px solid #8B5CF6; background: #F5F3FF; }
+
+    .alert-banner {
+      display: none;
+      background: #FEF3C7;
+      border: 2px solid #F59E0B;
+      color: #92400E;
+      padding: 6px 12px;
+      border-radius: 6px;
+      margin: 4px 10px;
+      font-size: 12px;
+      font-weight: 800;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .table-container {
+      margin: 4px 10px 10px;
+      background: white;
+      border-radius: 8px;
+      border: 1.5px solid var(--table-border);
+      overflow: hidden;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.06);
+    }
+    table { width: 100%; border-collapse: collapse; table-layout: fixed; text-align: center; }
+    th {
+      background: #0F172A;
+      color: white;
+      padding: 7px 4px;
+      font-size: 12px;
+      font-weight: 800;
+      border: 1px solid #334155;
+      letter-spacing: -0.2px;
+    }
+    th.col-period { width: 85px; background: #1E293B; }
+    th.col-time { width: 110px; background: #1E293B; }
+    th.col-today { background: #1D4ED8 !important; color: #FFFFFF; font-weight: 900; }
+
+    td { border: 1px solid var(--border); padding: 2px 3px; vertical-align: middle; font-size: 12px; }
+    .period-title { font-weight: 800; background: #F8FAFC; color: #1E293B; font-size: 11.5px; }
+    .time-slot { font-weight: 700; background: #F8FAFC; color: #475569; font-size: 10.5px; }
+
+    .lesson-cell {
+      height: 44px;
+      border-radius: 5px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2px;
+      gap: 2px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .lesson-cell:hover { outline: 2px dashed #0284C7; }
+    .lesson-cell.empty { color: #CBD5E1; font-size: 16px; font-weight: bold; }
+    .lesson-cell.filled { background: #F0F9FF; border: 1px solid #BAE6FD; }
+
+    .lesson-cell.activity-cell {
+      background: var(--activity-bg) !important;
+      border: 1.5px solid var(--activity-border) !important;
+    }
+    .lesson-cell.activity-cell .subject-name { color: #6B21A8 !important; font-weight: 900; font-size: 12px; }
+
+    .lesson-cell.backup-cell {
+      background: var(--backup-bg) !important;
+      border: 1.5px solid var(--backup-border) !important;
+    }
+    .lesson-cell.backup-cell .subject-name { color: #9A3412 !important; font-weight: 900; font-size: 12px; }
+
+    .subject-name {
+      font-weight: 800;
+      color: #0369A1;
+      font-size: 12px;
+      max-width: 95%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .class-name { font-size: 10.5px; color: #0284C7; font-weight: 700; }
+
+    .lesson-cell.active-now {
+      background: #DBEAFE !important;
+      border: 2px solid #2563EB !important;
+      box-shadow: 0 0 10px rgba(37, 99, 235, 0.45) !important;
+    }
+    .now-indicator {
+      background: #2563EB;
+      color: white;
+      font-size: 8.5px;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-weight: 800;
+    }
+
+    .badge-subtag { font-size: 8.5px; padding: 1px 4px; border-radius: 3px; font-weight: 800; }
+    .badge-act { background: #9333EA; color: white; }
+    .badge-bck { background: #EA580C; color: white; }
+
+    .row-break {
+      background: var(--break-bg);
+      color: #92400E;
+      font-weight: 800;
+      height: 32px;
+      font-size: 11.5px;
+      border-top: 1px solid var(--break-border);
+      border-bottom: 1px solid var(--break-border);
+    }
+    .row-prayer {
+      background: var(--prayer-bg);
+      color: #166534;
+      font-weight: 800;
+      height: 32px;
+      font-size: 11.5px;
+      border-top: 1px solid var(--prayer-border);
+      border-bottom: 1px solid var(--prayer-border);
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(2px);
+      z-index: 999;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+    }
+    .modal-content-compact {
+      background: white;
+      width: 100%;
+      max-width: 890px;
+      border-radius: 12px;
+      padding: 14px 18px;
+      max-height: 96vh;
+      overflow-y: auto;
+    }
+    .modal-header-compact {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #E2E8F0;
+      padding-bottom: 6px;
+    }
+    .settings-grid-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .form-group-compact { margin-bottom: 5px; }
+    .form-group-compact label { display: block; font-size: 10.5px; font-weight: 700; margin-bottom: 2px; color: #475569; }
+    .form-group-compact input, .form-group-compact select {
+      width: 100%;
+      padding: 5px 8px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 11.5px;
+      text-align: right;
+      background: #F8FAFC;
+    }
+    .chips-box { display: flex; flex-wrap: wrap; gap: 4px; max-height: 44px; overflow-y: auto; margin: 3px 0; }
+    .chip { background: #EFF6FF; color: #1E40AF; padding: 2px 7px; border-radius: 8px; font-size: 10px; font-weight: 700; display: flex; align-items: center; gap: 4px; }
+    .chip-del { color: red; cursor: pointer; font-weight: bold; }
+    .btn-row { display: flex; gap: 8px; margin-top: 10px; }
+    .btn-action { flex: 1; padding: 7px; border: none; border-radius: 6px; font-weight: 800; font-size: 12px; cursor: pointer; }
+    .btn-save { background: #1D4ED8; color: white; }
+    .btn-cancel { background: #F1F5F9; color: #475569; }
+
+    .features-card {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 8px;
+      padding: 8px 12px;
+      margin-bottom: 8px;
+    }
+    .features-card h4 { font-size: 12.5px; color: #1E3A8A; margin-bottom: 4px; display: flex; align-items: center; gap: 6px; }
+    .features-card p { font-size: 11.5px; color: #475569; line-height: 1.5; }
+  </style>
+</head>
+<body onclick="tryAutoLandscape()">
+
+  <header>
+    <div class="header-title">
+      <h1>الجدول المدرسي الذكي</h1>
+      <span>صالح جمعان الدبسي 2026</span>
+    </div>
+    <div class="header-actions">
+      <button class="btn-header" onclick="forceRotateLandscape()">🔄 تدوير عرضي</button>
+      <button class="btn-header" onclick="testAudioAlert()">🔊 تجربة التنبيه</button>
+      <button class="btn-header" style="background:#2563EB;" onclick="openSettingsModal()">⚙️ الإعدادات</button>
+    </div>
+  </header>
+
+  <div class="top-panel">
+    <div class="teacher-badge-bar">
+      <div class="t-item">👤 المعلم: <span id="dsp-teacher">--</span></div>
+      <div class="t-item">🏫 المدرسة: <span id="dsp-school">--</span></div>
+      <div class="t-item">🎓 المرحلة: <span id="dsp-stage">--</span></div>
+      <div class="t-item">📚 الفصول: <span id="dsp-grades">--</span></div>
+      <div class="t-item">📖 المواد: <span id="dsp-subjects">--</span></div>
+    </div>
+
+    <div class="info-strip">
+      <div style="display: flex; gap: 10px; align-items: center;">
+        <span class="today-name" id="day-name">--</span>
+        <span style="color:#64748B; font-size: 11px; font-weight:700;" id="dates-combined">--</span>
+        <span class="clock-live" id="live-clock">--:--:--</span>
+      </div>
+      <div class="badges-scroll">
+        <div class="badge-pill occasion"><b id="occasion-label-title">🇸🇦 المناسبة:</b> <span id="occasion-status-text">--</span></div>
+        <div class="badge-pill exam"><b id="exam-label-title">📝 الاختبارات:</b> <span id="exam-status-text">--</span></div>
+        <div class="badge-pill salary"><b>💳 راتب (27م):</b> <span id="salary-status">--</span></div>
+        <div class="badge-pill citizen"><b>🏠 المواطن (10م):</b> <span id="citizen-status">--</span></div>
+        <div class="badge-pill housing"><b>🏡 السكني (24م):</b> <span id="housing-status">--</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert-banner" id="alertBanner">
+    <span id="alertBannerText">🔔 تنبيه</span>
+    <button onclick="dismissBanner()" style="background:none; border:none; font-weight:bold; cursor:pointer;">✕</button>
+  </div>
+
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th class="col-period">الحصة</th>
+          <th class="col-time">التوقيت</th>
+          <th id="th-day-0">الأحد</th>
+          <th id="th-day-1">الإثنين</th>
+          <th id="th-day-2">الثلاثاء</th>
+          <th id="th-day-3">الأربعاء</th>
+          <th id="th-day-4">الخميس</th>
+        </tr>
+      </thead>
+      <tbody id="grid-body"></tbody>
+    </table>
+  </div>
+
+  <!-- نافذة الإعدادات الشاملة المدمجة -->
+  <div class="modal" id="settingsModal">
+    <div class="modal-content-compact">
+      <div class="modal-header-compact">
+        <span>⚙️ إعدادات النظام وتخصيص المناسبات والمواعيد</span>
+        <button onclick="closeSettingsModal()" style="border:none;background:none;font-size:16px;cursor:pointer;">✕</button>
+      </div>
+
+      <div style="margin-bottom:8px; display:flex; justify-content:flex-end;">
+        <button onclick="openFeaturesModal()" style="background:linear-gradient(135deg, #8B5CF6, #6D28D9); color:white; border:none; border-radius:6px; padding:5px 12px; font-size:11px; font-weight:800; cursor:pointer; display:flex; align-items:center; gap:5px;">
+          🌟 دليل مميزات وخدمات التطبيق
+        </button>
+      </div>
+
+      <div class="settings-grid-layout">
+        <!-- العمود الأيمن -->
+        <div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px;">
+            <div class="form-group-compact">
+              <label>المعلم:</label>
+              <input type="text" id="cfgTeacherName">
+            </div>
+            <div class="form-group-compact">
+              <label>المدرسة:</label>
+              <input type="text" id="cfgSchoolName">
+            </div>
+          </div>
+          <div class="form-group-compact">
+            <label>المرحلة الدراسية:</label>
+            <select id="cfgStage" onchange="onStageChange()">
+              <option value="المرحلة الثانوية">المرحلة الثانوية</option>
+              <option value="المرحلة المتوسطة">المرحلة المتوسطة</option>
+              <option value="المرحلة الابتدائية (الصفوف العليا)">المرحلة الابتدائية (الصفوف العليا)</option>
+              <option value="المرحلة الابتدائية (الصفوف الأولية)">المرحلة الابتدائية (الصفوف الأولية)</option>
+              <option value="الطفولة المبكرة / رياض الأطفال">الطفولة المبكرة / رياض الأطفال</option>
+            </select>
+          </div>
+          <div class="form-group-compact">
+            <label>فصول المدرسة لكل صف (1-15):</label>
+            <div id="gradesGridBox" style="display:grid; grid-template-columns:repeat(3, 1fr); gap:4px;"></div>
+          </div>
+          <div class="form-group-compact">
+            <label>فصولك المسندة:</label>
+            <div class="chips-box" id="classesChipBox"></div>
+            <div style="display:flex; gap:4px;">
+              <select id="schoolClassesDropdown" style="flex:1;"></select>
+              <button style="background:#0284C7;color:white;border:none;border-radius:5px;padding:0 8px;font-size:10.5px;font-weight:700;" onclick="addSelectedClass()">➕ إضافة</button>
+            </div>
+          </div>
+
+          <!-- قسم المناسبات الوطنية والأيام العالمية -->
+          <div style="background:#F5F3FF; border:1px solid #DDD6FE; border-radius:6px; padding:6px; margin-top:4px;">
+            <div style="font-size:11px; font-weight:800; color:#6D28D9; margin-bottom:3px;">🇸🇦 المناسبات الوطنية والأيام العالمية:</div>
+            <div class="chips-box" id="occasionsChipBox"></div>
+            
+            <div style="display:flex; gap:4px;">
+              <select id="presetOccasionsDropdown" style="flex:1;">
+                <option value="">-- اختر من المناسبات المعتمدة --</option>
+              </select>
+              <button style="background:#7C3AED;color:white;border:none;border-radius:5px;padding:0 8px;font-size:10.5px;font-weight:700;" onclick="addPresetOccasion()">➕ تفعيل</button>
+            </div>
+
+            <!-- إضافة ما يستجد -->
+            <div style="margin-top:6px; border-top:1px dashed #DDD6FE; padding-top:4px;">
+              <span style="font-size:10px; font-weight:800; color:#4C1D95;">➕ إضافة ما يستجد من مناسبات (تحويل تلقائي):</span>
+              <div style="display:flex; gap:4px; margin-top:3px;">
+                <input type="text" id="newOccasionName" placeholder="اسم المناسبة المستجدة..." style="flex:2;">
+                <select id="calendarTypeSelect" style="flex:1;" onchange="toggleCalendarInput(this.value)">
+                  <option value="gregorian">📅 ميلادي</option>
+                  <option value="hijri">🌙 هجري</option>
+                </select>
+              </div>
+
+              <div id="gregorianInputDiv" style="display:flex; gap:4px; align-items:center; margin-top:3px;">
+                <input type="date" id="newOccasionDate" style="flex:1;" onchange="convertGregToHijri(this.value)">
+                <span id="convertedHijriText" style="font-size:10px; color:#6D28D9; font-weight:700; flex:1;">الموافق هجرياً: --</span>
+              </div>
+
+              <div id="hijriInputDiv" style="display:none; gap:4px; align-items:center; margin-top:3px;">
+                <input type="text" id="hijriDayInput" placeholder="يوم" style="width:40px; text-align:center;">
+                <input type="text" id="hijriMonthInput" placeholder="شهر" style="width:40px; text-align:center;">
+                <input type="text" id="hijriYearInput" placeholder="1448" value="1448" style="width:55px; text-align:center;">
+                <button style="background:#6D28D9; color:white; border:none; border-radius:4px; padding:3px 6px; font-size:10px;" onclick="convertHijriToGreg()">تحويل</button>
+                <span id="convertedGregText" style="font-size:10px; color:#0369A1; font-weight:700; flex:1;">الموافق ميلادياً: --</span>
+              </div>
+
+              <button style="width:100%; margin-top:4px; background:#475569; color:white; border:none; border-radius:5px; padding:4px 0; font-size:10.5px; font-weight:700;" onclick="addNewCustomOccasion()">➕ حفظ وإدراج المناسبة</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- العمود الأيسر -->
+        <div>
+          <div class="form-group-compact">
+            <label>موادك المسندة:</label>
+            <div class="chips-box" id="subjectsChipBox"></div>
+            <div style="display:flex; gap:4px;">
+              <select id="schoolSubjectsDropdown" style="flex:1;"></select>
+              <button style="background:#0284C7;color:white;border:none;border-radius:5px;padding:0 8px;font-size:10.5px;font-weight:700;" onclick="addSelectedSubject()">➕ إضافة</button>
+            </div>
+          </div>
+
+          <!-- وقت الفسحة المدرسية -->
+          <div style="background:#FEF3C7; border:1px solid #FDE68A; border-radius:6px; padding:6px; margin-top:4px;">
+            <div style="font-size:11px; font-weight:800; color:#B45309; margin-bottom:3px;">☕ وقت الفسحة المدرسية:</div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px;">
+              <div class="form-group-compact">
+                <label>موعد الفسحة:</label>
+                <select id="cfgBreakAfter">
+                  <option value="2">بعد الحصة الثانية</option>
+                  <option value="3">بعد الحصة الثالثة</option>
+                  <option value="4">بعد الحصة الرابعة</option>
+                </select>
+              </div>
+              <div class="form-group-compact">
+                <label>مدة الفسحة:</label>
+                <select id="cfgBreakDuration">
+                  <option value="15">15 دقيقة</option>
+                  <option value="20">20 دقيقة</option>
+                  <option value="25">25 دقيقة</option>
+                  <option value="30">30 دقيقة</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- وقت صلاة الظهر -->
+          <div style="background:#DCFCE7; border:1px solid #BBF7D0; border-radius:6px; padding:6px; margin-top:4px;">
+            <div style="font-size:11px; font-weight:800; color:#15803D; margin-bottom:3px;">🕌 وقت صلاة الظهر:</div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px;">
+              <div class="form-group-compact">
+                <label>موعد الصلاة:</label>
+                <select id="cfgPrayerAfter">
+                  <option value="5">بعد الحصة الخامسة</option>
+                  <option value="6">بعد الحصة السادسة</option>
+                </select>
+              </div>
+              <div class="form-group-compact">
+                <label>مدة الصلاة:</label>
+                <select id="cfgPrayerDuration">
+                  <option value="15">15 دقيقة</option>
+                  <option value="20">20 دقيقة</option>
+                  <option value="25">25 دقيقة</option>
+                  <option value="30">30 دقيقة</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px; margin-top:4px;">
+            <div class="form-group-compact">
+              <label>🎯 يوم النشاط:</label>
+              <select id="cfgActivityDay">
+                <option value="الأحد">الأحد</option>
+                <option value="الإثنين">الإثنين</option>
+                <option value="الثلاثاء">الثلاثاء</option>
+                <option value="الأربعاء">الأربعاء</option>
+                <option value="الخميس">الخميس</option>
+              </select>
+            </div>
+            <div class="form-group-compact">
+              <label>حصة النشاط:</label>
+              <select id="cfgActivityPeriod">
+                <option value="1">الحصة 1</option>
+                <option value="2">الحصة 2</option>
+                <option value="3">الحصة 3</option>
+                <option value="4">الحصة 4</option>
+                <option value="5">الحصة 5</option>
+                <option value="6">الحصة 6</option>
+                <option value="7">الحصة 7</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="background:#FFF7ED; border:1px solid #FED7AA; border-radius:6px; padding:5px; margin-top:4px;">
+            <div style="font-size:10.5px; font-weight:800; color:#C2410C; margin-bottom:2px;">🛡️ حصص الاحتياط والانتظار:</div>
+            <div class="chips-box" id="backupSlotsChipBox"></div>
+            <div style="display:flex; gap:4px;">
+              <select id="backupDaySelect" style="flex:1;">
+                <option value="الأحد">الأحد</option>
+                <option value="الإثنين">الإثنين</option>
+                <option value="الثلاثاء">الثلاثاء</option>
+                <option value="الأربعاء">الأربعاء</option>
+                <option value="الخميس">الخميس</option>
+              </select>
+              <select id="backupPeriodSelect" style="flex:1;">
+                <option value="1">حصة 1</option>
+                <option value="2">حصة 2</option>
+                <option value="3">حصة 3</option>
+                <option value="4">حصة 4</option>
+                <option value="5">حصة 5</option>
+                <option value="6">حصة 6</option>
+                <option value="7">حصة 7</option>
+              </select>
+              <button style="background:#EA580C;color:white;border:none;border-radius:5px;padding:0 8px;font-size:10px;font-weight:700;" onclick="addBackupSlot()">➕ تعيين</button>
+            </div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px; margin-top:4px;">
+            <div class="form-group-compact">
+              <label>📝 نوع الاختبار:</label>
+              <select id="cfgExamType">
+                <option value="الاختبارات الفترية الأولى">فترية أولى</option>
+                <option value="الاختبارات الفترية الثانية">فترية ثانية</option>
+                <option value="اختبارات منتصف الفصل">منتصف الفصل</option>
+                <option value="الاختبارات النهائية">النهائية</option>
+              </select>
+            </div>
+            <div class="form-group-compact">
+              <label>تاريخ الاختبار:</label>
+              <input type="date" id="cfgExamDate">
+            </div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px; margin-top:4px;">
+            <div class="form-group-compact">
+              <label>🕒 التوقيت:</label>
+              <select id="cfgTimingMode">
+                <option value="summer">☀️ صيفي (07:00 ص)</option>
+                <option value="winter">❄️ شتوي (07:30 ص)</option>
+              </select>
+            </div>
+            <div class="form-group-compact">
+              <label>⏳ مدة الحصة:</label>
+              <select id="cfgLessonDuration">
+                <option value="40">40 دقيقة</option>
+                <option value="45">45 دقيقة</option>
+                <option value="50">50 دقيقة</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn-action btn-save" onclick="saveSettingsModal()">💾 حفظ كافة الإعدادات</button>
+        <button class="btn-action btn-cancel" onclick="closeSettingsModal()">إغلاق</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- نافذة مميزات وخدمات التطبيق المنبثقة -->
+  <div class="modal" id="featuresModal">
+    <div class="modal-content-compact" style="max-width: 650px;">
+      <div class="modal-header-compact">
+        <span>🌟 دليل خدمات ومميزات الجدول المدرسي الذكي</span>
+        <button onclick="closeFeaturesModal()" style="border:none;background:none;font-size:16px;cursor:pointer;">✕</button>
+      </div>
+      
+      <div style="max-height: 80vh; overflow-y: auto; padding: 4px 6px;">
+        <div class="features-card">
+          <h4>📅 جدول مدرسي واضح وسهل النظر</h4>
+          <p>خطوط كبيرة وبارزة وتنسيق مريح للعين، مع تمييز الحصة الجارية حالياً بوهج أزرق ووسم <b>● الآن</b> لسهولة المتابعة اللحظية.</p>
+        </div>
+
+        <div class="features-card">
+          <h4>🌙 تحويل تلقائي بين التاريخ الهجري والميلادي</h4>
+          <p>إمكانية إدخال المناسبات إما بالتقويم الهجري أو الميلادي مع حساب وتحويل التاريخ المقابل لهما تلقائياً ودون أخطاء.</p>
+        </div>
+
+        <div class="features-card">
+          <h4>☕🕌 أوقات الفسحة والصلاة</h4>
+          <p>تحديد موعد ومدة الفسحة المدرسية وموعد ومدة صلاة الظهر بدقة مع إعادة حساب تواقيت الحصص آلياً.</p>
+        </div>
+
+        <div class="features-card">
+          <h4>🎓 ذكاء المراحل وتوليد الفصول التلقائي</h4>
+          <p>تحديد المرحلة التعليمية واختيار عدد فصول المدرسة من 1 إلى 15 فصلاً لكل صف، مع توليد فصول المدرسة وقوائم المواد المعتمدة تلقائياً.</p>
+        </div>
+
+        <div class="features-card">
+          <h4>🎯 إدارة حصص النشاط والاحتياط</h4>
+          <p>تخصيص حصة النشاط وتعيين حصص الانتظار/الاحتياط المسندة للمعلم بألوان وشارات مميزة مع إمكانية تدوين اسم المعلم البديل.</p>
+        </div>
+
+        <div class="features-card">
+          <h4>🔊 نظام التنبيهات المزدوج (صوتي ومرئي)</h4>
+          <p>نغمات تنبيه وتنبيهات مرئية ذكية قبل بداية الحصة بـ 5 دقائق، وقبل نهايتها بـ 3 دقائق، ووقت الفسحة، وموعد صلاة الظهر.</p>
+        </div>
+
+        <div class="features-card">
+          <h4>💳 شريط الصرف والاختبارات التنازلي</h4>
+          <p>تقويم أم القرى الهجري، وتاريخ ميلادي، وساعة رقمية حية، مع عدادات تنازلية لرواتب الموظفين (27)، حساب المواطن (10)، الدعم السكني (24)، ومواعيد الاختبارات.</p>
+        </div>
+      </div>
+
+      <div class="btn-row" style="margin-top: 10px;">
+        <button class="btn-action btn-save" onclick="closeFeaturesModal()">حسناً، فهمت</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- نافذة تعديل الحصة -->
+  <div class="modal" id="editModal">
+    <div class="modal-content-compact" style="max-width:340px;">
+      <div class="modal-header-compact" id="modalTitle">تعديل بيانات الحصة</div>
+      <div class="form-group-compact">
+        <label>نوع الحصة:</label>
+        <select id="mLessonType" onchange="onLessonTypeChange(this.value)">
+          <option value="normal">حصة تدريس أساسية</option>
+          <option value="backup">حصة احتياط / انتظار</option>
+          <option value="activity">حصة نشاط طلابي</option>
+        </select>
+      </div>
+      <div class="form-group-compact" id="subjectInputGroup">
+        <label>المادة:</label>
+        <select id="mSubjectSelect" onchange="document.getElementById('mSubject').value=this.value"></select>
+        <input type="text" id="mSubject" placeholder="أو اكتب اسم المادة..." style="margin-top:3px;">
+      </div>
+      <div class="form-group-compact" style="margin-top:4px;">
+        <label>الفصل:</label>
+        <select id="mClassSelect" onchange="document.getElementById('mClass').value=this.value"></select>
+        <input type="text" id="mClass" placeholder="أو اكتب الفصل..." style="margin-top:3px;">
+      </div>
+      <div class="form-group-compact" style="margin-top:4px;">
+        <label>ملاحظات (معلم الغياب / التكليف):</label>
+        <input type="text" id="mNotes" placeholder="واجب، بديل عن المعلم الغائب...">
+      </div>
+      <div class="btn-row">
+        <button class="btn-action btn-save" onclick="saveModalData()">حفظ</button>
+        <button class="btn-action" style="background:#FEE2E2;color:#DC2626;" onclick="clearModalData()">مسح</button>
+        <button class="btn-action btn-cancel" onclick="closeModal()">إلغاء</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const STORAGE_KEY = "school_schedule_mobile_db";
+    const days = ["الأحد", "الإثنين", "الثلاثاء", "الأربعاء", "الخميس"];
+
+    const STAGE_CONFIG = {
+      "المرحلة الثانوية": [{"id": "1", "name": "أول ثانوي"}, {"id": "2", "name": "ثاني ثانوي"}, {"id": "3", "name": "ثالث ثانوي"}],
+      "المرحلة المتوسطة": [{"id": "1", "name": "أول متوسط"}, {"id": "2", "name": "ثاني متوسط"}, {"id": "3", "name": "ثالث متوسط"}],
+      "المرحلة الابتدائية (الصفوف العليا)": [{"id": "4", "name": "رابع ابتدائي"}, {"id": "5", "name": "خامس ابتدائي"}, {"id": "6", "name": "سادس ابتدائي"}],
+      "المرحلة الابتدائية (الصفوف الأولية)": [{"id": "1", "name": "أول ابتدائي"}, {"id": "2", "name": "ثاني ابتدائي"}, {"id": "3", "name": "ثالث ابتدائي"}],
+      "الطفولة المبكرة / رياض الأطفال": [{"id": "مستوى 1", "name": "مستوى أول"}, {"id": "مستوى 2", "name": "مستوى ثاني"}, {"id": "تمهيدي", "name": "تمهيدي"}]
+    };
+
+    const STAGE_SUBJECTS = {
+      "المرحلة الثانوية": ["لغتي الخالدة", "كفايات لغوية", "المهارات الحياتية", "التقنية الرقمية", "رياضيات", "تفكير ناقد", "علوم", "فيزياء", "أحياء", "كيمياء", "دراسات إسلامية", "لغة إنجليزية", "تاريخ", "جغرافيا"],
+      "المرحلة المتوسطة": ["لغتي الخالدة", "رياضيات", "علوم", "دراسات إسلامية", "دراسات اجتماعية", "المهارات الرقمية", "لغة إنجليزية", "تربية بدنية", "تربية فنية", "تفكير ناقد"],
+      "المرحلة الابتدائية (الصفوف العليا)": ["لغتي الجميلة", "رياضيات", "علوم", "دراسات إسلامية", "اجتماعيات", "مهارات رقمية", "لغة إنجليزية", "تربية فنية", "تربية بدنية", "مهارات حياتية وأسرية"],
+      "المرحلة الابتدائية (الصفوف الأولية)": ["لغتي", "رياضيات", "علوم", "القرآن الكريم والدراسات الإسلامية", "لغة إنجليزية", "تربية فنية", "تربية بدنية", "مهارات حياتية وأسرية"],
+      "الطفولة المبكرة / رياض الأطفال": ["حلقة تعليمية", "أركان تعليمية", "قراءة وقرآن", "أنشطة حركية", "وجبة واستراحة", "لقاء أخير", "لعب حر"]
+    };
+
+    const DEFAULT_OCCASIONS = [
+      {"name": "اليوم الوطني السعودي", "date": "2026-09-23", "hijri": "1448-04-12"},
+      {"name": "يوم التأسيس السعودي", "date": "2027-02-22", "hijri": "1448-09-15"},
+      {"name": "يوم العلم السعودي", "date": "2027-03-11", "hijri": "1448-10-03"},
+      {"name": "اليوم العالمي للمعلم", "date": "2026-10-05", "hijri": "1448-04-24"},
+      {"name": "اليوم العالمي للغة العربية", "date": "2026-12-18", "hijri": "1448-07-09"},
+      {"name": "اليوم العالمي للطفل", "date": "2026-11-20", "hijri": "1448-06-11"},
+      {"name": "اليوم العالمي للدفاع المدني", "date": "2027-03-01", "hijri": "1448-09-22"},
+      {"name": "اليوم العالمي للبيئة", "date": "2027-06-05", "hijri": "1448-12-30"},
+      {"name": "يوم التطوع السعودي والعالمي", "date": "2026-12-05", "hijri": "1448-06-26"}
+    ];
+
+    let appData = null;
+    let currentEdit = { day: null, period: null };
+    let triggeredAlerts = new Set();
+
+    let tempSubjects = [];
+    let tempMyClasses = [];
+    let tempGradeCounts = {};
+    let tempBackupSlots = [];
+    let tempOccasions = [];
+
+    function loadLocalData() {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        try { return JSON.parse(saved); } catch(e){}
+      }
+      return {
+        profile: {
+          teacher_name: "أ. صالح جمعان الغامدي",
+          school_name: "ثانوية حنظلة بن أبي عامر",
+          stage: "المرحلة الثانوية",
+          grade_counts: {"1": 4, "2": 4, "3": 4},
+          my_classes: ["1/1", "1/2", "2/1", "3/2"],
+          subjects: STAGE_SUBJECTS["المرحلة الثانوية"].slice(0, 3)
+        },
+        occasions: DEFAULT_OCCASIONS,
+        activity: { enabled: true, day: "الثلاثاء", period: 4, title: "النشاط الطلابي" },
+        backup: { enabled: true, slots: ["الأحد-3", "الخميس-2"] },
+        exams: { selected_type: "الاختبارات الفترية الأولى", exam_date: "2026-10-18" },
+        settings: { mode: "summer", duration: 45, break_after: 3, break_duration: 25, prayer_after: 6, prayer_duration: 25 },
+        lessons: {
+          "الأحد": {}, "الإثنين": {}, "الثلاثاء": {}, "الأربعاء": {}, "الخميس": {}
+        }
+      };
+    }
+
+    function saveLocalData() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(appData));
+    }
+
+    function toggleCalendarInput(type) {
+      if (type === 'hijri') {
+        document.getElementById('gregorianInputDiv').style.display = 'none';
+        document.getElementById('hijriInputDiv').style.display = 'flex';
+      } else {
+        document.getElementById('gregorianInputDiv').style.display = 'flex';
+        document.getElementById('hijriInputDiv').style.display = 'none';
+      }
+    }
+
+    function convertGregToHijri(gregDateStr) {
+      if (!gregDateStr) return;
+      try {
+        const parts = gregDateStr.split('-');
+        const dateObj = new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]));
+        const hijriFormatter = new Intl.DateTimeFormat('ar-SA-u-ca-islamic-umalqura', {
+          year: 'numeric', month: 'numeric', day: 'numeric'
+        });
+        const formatted = hijriFormatter.format(dateObj);
+        document.getElementById('convertedHijriText').innerText = `الموافق هجرياً: ${formatted} هـ`;
+      } catch(e) {}
+    }
+
+    function convertHijriToGreg() {
+      const d = parseInt(document.getElementById('hijriDayInput').value);
+      const m = parseInt(document.getElementById('hijriMonthInput').value);
+      const y = parseInt(document.getElementById('hijriYearInput').value || 1448);
+
+      if (!d || !m || !y) {
+        alert("يرجى إدخال اليوم والشهر الهجري بشكل صحيح");
+        return;
+      }
+
+      const approxGregDays = Math.round((y - 1) * 354.367 + (m - 1) * 29.53 + d + 227015);
+      const gregEpoch = new Date(622, 6, 16).getTime();
+      const targetTime = gregEpoch + (approxGregDays - 227015) * 86400000;
+      const targetDate = new Date(targetTime);
+
+      const yyyy = targetDate.getFullYear();
+      const mm = String(targetDate.getMonth() + 1).padStart(2, '0');
+      const dd = String(targetDate.getDate()).padStart(2, '0');
+      const gregStr = `${yyyy}-${mm}-${dd}`;
+
+      document.getElementById('newOccasionDate').value = gregStr;
+      document.getElementById('convertedGregText').innerText = `الموافق ميلادياً: ${gregStr} م`;
+    }
+
+    async function forceRotateLandscape() {
+      try {
+        if (!document.fullscreenElement) {
+          await document.documentElement.requestFullscreen().catch(()=>{});
+        }
+        if (screen.orientation && screen.orientation.lock) {
+          await screen.orientation.lock('landscape').catch(()=>{});
+        }
+      } catch(e) {}
+    }
+
+    function tryAutoLandscape() {
+      if (screen.orientation && screen.orientation.lock && window.innerHeight > window.innerWidth) {
+        screen.orientation.lock('landscape').catch(()=>{});
+      }
+    }
+
+    let audioCtx = null;
+    function playTone(freq, dur, type="sine", delay=0) {
+      setTimeout(() => {
+        try {
+          if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+          if (audioCtx.state === 'suspended') audioCtx.resume();
+          const osc = audioCtx.createOscillator();
+          const g = audioCtx.createGain();
+          osc.type = type;
+          osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+          g.gain.setValueAtTime(0.2, audioCtx.currentTime);
+          g.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + dur);
+          osc.connect(g); g.connect(audioCtx.destination);
+          osc.start(); osc.stop(audioCtx.currentTime + dur);
+        } catch(e){}
+      }, delay);
+    }
+
+    function testAudioAlert() {
+      playTone(523.25, 0.2, "sine", 0);
+      playTone(659.25, 0.2, "sine", 150);
+      playTone(783.99, 0.4, "triangle", 300);
+      showVisualAlert("🔔 نظام التنبيه يعمل بجودة ممتازة!");
+    }
+
+    function showVisualAlert(msg) {
+      const banner = document.getElementById('alertBanner');
+      document.getElementById('alertBannerText').innerText = msg;
+      banner.style.display = 'flex';
+      setTimeout(() => { banner.style.display = 'none'; }, 20000);
+    }
+    function dismissBanner() { document.getElementById('alertBanner').style.display = 'none'; }
+
+    function calculateTimeline() {
+      const isSummer = appData.settings.mode === 'summer';
+      let hour = 7;
+      let minute = isSummer ? 0 : 30;
+      const dur = parseInt(appData.settings.duration || 45);
+      const bAfter = parseInt(appData.settings.break_after || 3);
+      const bDur = parseInt(appData.settings.break_duration || 25);
+      const pAfter = parseInt(appData.settings.prayer_after || 6);
+      const pDur = parseInt(appData.settings.prayer_duration || 25);
+
+      const addMinutes = (h, m, add) => {
+        let total = h * 60 + m + add;
+        return { h: Math.floor(total / 60) % 24, m: total % 60 };
+      };
+
+      const formatT = (h, m) => {
+        let period = h >= 12 ? 'م' : 'ص';
+        let dispH = h > 12 ? h - 12 : (h === 0 ? 12 : h);
+        let dispM = m.toString().padStart(2, '0');
+        return `${dispH}:${dispM} ${period}`;
+      };
+
+      let rows = [];
+      for(let p = 1; p <= 7; p++) {
+        let end = addMinutes(hour, minute, dur);
+        rows.push({ type: 'lesson', num: p, title: `الحصة ${p}`, startH: hour, startM: minute, endH: end.h, endM: end.m, time: `${formatT(hour, minute)} - ${formatT(end.h, end.m)}` });
+        hour = end.h; minute = end.m;
+
+        if (p === bAfter) {
+          let bEnd = addMinutes(hour, minute, bDur);
+          rows.push({ type: 'break', title: '☕ الفسحة المدرسية', startH: hour, startM: minute, endH: bEnd.h, endM: bEnd.m, time: `${formatT(hour, minute)} - ${formatT(bEnd.h, bEnd.m)}`, note: `استراحة وتناول وجبة الإفطار (${bDur} د)` });
+          hour = bEnd.h; minute = bEnd.m;
+        }
+        if (p === pAfter) {
+          let pEnd = addMinutes(hour, minute, pDur);
+          rows.push({ type: 'prayer', title: '🕌 صلاة الظهر', startH: hour, startM: minute, endH: pEnd.h, endM: pEnd.m, time: `${formatT(hour, minute)} - ${formatT(pEnd.h, pEnd.m)}`, note: `أداء صلاة الظهر جماعة بالمصلى (${pDur} د)` });
+          hour = pEnd.h; minute = pEnd.m;
+        }
+      }
+      return rows;
+    }
+
+    function renderGrid() {
+      const timeline = calculateTimeline();
+      const tbody = document.getElementById('grid-body');
+      tbody.innerHTML = '';
+
+      const actConfig = appData.activity || {};
+      const backupSlots = (appData.backup && appData.backup.slots) || [];
+
+      timeline.forEach(item => {
+        const tr = document.createElement('tr');
+        if (item.type === 'break' || item.type === 'prayer') {
+          tr.className = item.type === 'break' ? 'row-break' : 'row-prayer';
+          tr.innerHTML = `<td style="font-weight:900;">${item.title}</td><td style="font-size:10px; font-weight:800;">${item.time}</td><td colspan="5">${item.note}</td>`;
+        } else {
+          let pNum = item.num;
+          let cellsHtml = '';
+          days.forEach(day => {
+            let info = appData.lessons[day] ? appData.lessons[day][pNum] : null;
+            let slotKey = `${day}-${pNum}`;
+            let isConfigActivity = actConfig.enabled && actConfig.day === day && parseInt(actConfig.period) === pNum;
+            let isConfigBackup = backupSlots.includes(slotKey);
+
+            let cellClass = "lesson-cell";
+            let displaySub = info && info.subject ? info.subject : "";
+            let displayCls = info && info.classroom ? info.classroom : "";
+            let badgeTag = "";
+
+            if (isConfigActivity || (info && info.type === 'activity')) {
+              cellClass += " activity-cell";
+              if (!displaySub) displaySub = actConfig.title || "النشاط الطلابي";
+              badgeTag = `<span class="badge-subtag badge-act">🎯 نشاط</span>`;
+            } else if (isConfigBackup || (info && info.type === 'backup')) {
+              cellClass += " backup-cell";
+              if (!displaySub) displaySub = "حصة احتياط";
+              badgeTag = `<span class="badge-subtag badge-bck">🛡️ احتياط</span>`;
+            } else if (displaySub) {
+              cellClass += " filled";
+            } else {
+              cellClass += " empty";
+              displaySub = "+";
+            }
+
+            cellsHtml += `
+              <td>
+                <div id="cell-${day}-${pNum}" class="${cellClass}" onclick="openModal('${day}', ${pNum})">
+                  <div class="subject-name">${displaySub}</div>
+                  <div class="class-name">${displayCls} ${badgeTag}</div>
+                </div>
+              </td>`;
+          });
+          tr.innerHTML = `<td class="period-title">${item.title}</td><td class="time-slot">${item.time}</td>${cellsHtml}`;
+        }
+        tbody.appendChild(tr);
+      });
+      highlightCurrentLesson();
+    }
+
+    function highlightCurrentLesson() {
+      const now = new Date();
+      const currentDayIndex = now.getDay();
+      const currentMinutes = now.getHours() * 60 + now.getMinutes();
+
+      for (let i = 0; i < 5; i++) {
+        const th = document.getElementById(`th-day-${i}`);
+        if (th) {
+          if (i === currentDayIndex) th.classList.add('col-today');
+          else th.classList.remove('col-today');
+        }
+      }
+
+      const timeline = calculateTimeline();
+      timeline.forEach(item => {
+        const startMin = item.startH * 60 + item.startM;
+        const endMin = item.endH * 60 + item.endM;
+        const isCurrentTime = (currentMinutes >= startMin && currentMinutes < endMin);
+
+        if (item.type === 'lesson') {
+          days.forEach((day, dIdx) => {
+            const cell = document.getElementById(`cell-${day}-${item.num}`);
+            if (cell) {
+              if (isCurrentTime && dIdx === currentDayIndex) {
+                cell.classList.add('active-now');
+                if (!cell.querySelector('.now-indicator')) {
+                  const tag = document.createElement('span');
+                  tag.className = 'now-indicator';
+                  tag.innerText = '● الآن';
+                  cell.appendChild(tag);
+                }
+              } else {
+                cell.classList.remove('active-now');
+                const tag = cell.querySelector('.now-indicator');
+                if (tag) tag.remove();
+              }
+            }
+          });
+        }
+      });
+    }
+
+    function updateDashboard() {
+      const now = new Date();
+      const dayNames = ["الأحد", "الإثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"];
+      document.getElementById('day-name').innerText = `يوم ${dayNames[now.getDay()]}`;
+
+      let hijri = "";
+      try {
+        hijri = new Intl.DateTimeFormat('ar-SA-u-ca-islamic-umalqura', { day: 'numeric', month: 'short' }).format(now);
+      } catch(e) { hijri = ""; }
+      document.getElementById('dates-combined').innerText = `${hijri} | ${now.getDate()}/${now.getMonth()+1}/${now.getFullYear()}م`;
+
+      const getRem = (targetDay) => {
+        let yr = now.getFullYear(), mo = now.getMonth();
+        let target = new Date(yr, mo, targetDay);
+        if (target.getDay() === 5) target.setDate(target.getDate() - 1);
+        else if (target.getDay() === 6) target.setDate(target.getDate() + 1);
+        if (now > target && now.getDate() > target.getDate()) {
+          mo++; if(mo > 11){ mo=0; yr++; }
+          target = new Date(yr, mo, targetDay);
+          if (target.getDay() === 5) target.setDate(target.getDate() - 1);
+          else if (target.getDay() === 6) target.setDate(target.getDate() + 1);
+        }
+        return Math.ceil((target - now) / (1000*60*60*24));
+      };
+
+      document.getElementById('salary-status').innerText = `${getRem(27)} يوم`;
+      document.getElementById('citizen-status').innerText = `${getRem(10)} يوم`;
+      document.getElementById('housing-status').innerText = `${getRem(24)} يوم`;
+
+      const occList = appData.occasions || [];
+      let nextOcc = null;
+      let minDiff = Infinity;
+      const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+
+      occList.forEach(occ => {
+        if (!occ.date) return;
+        let [y, m, d] = occ.date.split('-').map(Number);
+        let oDate = new Date(y, m - 1, d);
+        if (oDate < today) {
+          oDate.setFullYear(today.getFullYear());
+          if (oDate < today) oDate.setFullYear(today.getFullYear() + 1);
+        }
+        let diffDays = Math.ceil((oDate - today) / (1000 * 60 * 60 * 24));
+        if (diffDays >= 0 && diffDays < minDiff) {
+          minDiff = diffDays;
+          nextOcc = { name: occ.name, days: diffDays };
+        }
+      });
+
+      if (nextOcc) {
+        document.getElementById('occasion-label-title').innerText = `🇸🇦 ${nextOcc.name}:`;
+        document.getElementById('occasion-status-text').innerText = nextOcc.days === 0 ? "اليوم 🎉" : `${nextOcc.days} يوم`;
+      } else {
+        document.getElementById('occasion-label-title').innerText = "🇸🇦 المناسبة:";
+        document.getElementById('occasion-status-text').innerText = "--";
+      }
+
+      const ex = appData.exams || {};
+      document.getElementById('exam-label-title').innerText = `📝 ${ex.selected_type || 'الاختبارات'}:`;
+      if (ex.exam_date) {
+        let t = new Date(ex.exam_date); t.setHours(0,0,0,0);
+        let diff = Math.ceil((t - today)/(1000*60*60*24));
+        document.getElementById('exam-status-text').innerText = diff === 0 ? 'تبدأ اليوم ✍️' : (diff > 0 ? `${diff} يوم` : 'انتهت');
+      }
+    }
+
+    function updateClock() {
+      const now = new Date();
+      let h = now.getHours(), m = now.getMinutes().toString().padStart(2,'0'), s = now.getSeconds().toString().padStart(2,'0');
+      let p = h >= 12 ? 'م' : 'ص'; h = h > 12 ? h-12 : (h===0?12:h);
+      document.getElementById('live-clock').innerText = `${h}:${m}:${s} ${p}`;
+      highlightCurrentLesson();
+    }
+
+    function updateProfileDisplay() {
+      const p = appData.profile || {};
+      document.getElementById('dsp-teacher').innerText = p.teacher_name || "---";
+      document.getElementById('dsp-school').innerText = p.school_name || "---";
+      document.getElementById('dsp-stage').innerText = p.stage || "---";
+      document.getElementById('dsp-grades').innerText = (p.my_classes || []).join('، ') || "---";
+      document.getElementById('dsp-subjects').innerText = (p.subjects || []).join('، ') || "---";
+    }
+
+    function openSettingsModal() {
+      const p = appData.profile, s = appData.settings, ex = appData.exams, act = appData.activity || {}, bck = appData.backup || {};
+      document.getElementById('cfgTeacherName').value = p.teacher_name;
+      document.getElementById('cfgSchoolName').value = p.school_name;
+      document.getElementById('cfgStage').value = p.stage;
+      document.getElementById('cfgTimingMode').value = s.mode;
+      document.getElementById('cfgLessonDuration').value = s.duration;
+
+      document.getElementById('cfgBreakAfter').value = s.break_after || 3;
+      document.getElementById('cfgBreakDuration').value = s.break_duration || 25;
+      document.getElementById('cfgPrayerAfter').value = s.prayer_after || 6;
+      document.getElementById('cfgPrayerDuration').value = s.prayer_duration || 25;
+
+      document.getElementById('cfgExamType').value = ex.selected_type;
+      document.getElementById('cfgExamDate').value = ex.exam_date;
+
+      document.getElementById('cfgActivityDay').value = act.day || "الثلاثاء";
+      document.getElementById('cfgActivityPeriod').value = act.period || 4;
+
+      tempGradeCounts = {...p.grade_counts};
+      tempSubjects = [...p.subjects];
+      tempMyClasses = [...p.my_classes];
+      tempBackupSlots = bck.slots ? [...bck.slots] : [];
+      tempOccasions = appData.occasions ? JSON.parse(JSON.stringify(appData.occasions)) : [...DEFAULT_OCCASIONS];
+
+      renderGradesControls();
+      updateSchoolSubjectsDropdown();
+      renderSubjectsChips();
+      renderClassesChips();
+      renderBackupChips();
+      renderOccasionsUI();
+
+      document.getElementById('settingsModal').style.display = 'flex';
+    }
+    function closeSettingsModal() { document.getElementById('settingsModal').style.display = 'none'; }
+
+    function openFeaturesModal() {
+      document.getElementById('featuresModal').style.display = 'flex';
+    }
+    function closeFeaturesModal() {
+      document.getElementById('featuresModal').style.display = 'none';
+    }
+
+    function renderGradesControls() {
+      const stage = document.getElementById('cfgStage').value;
+      const grades = STAGE_CONFIG[stage] || [];
+      const box = document.getElementById('gradesGridBox');
+      box.innerHTML = '';
+      grades.forEach(g => {
+        let count = tempGradeCounts[g.id] || 4;
+        let opts = '';
+        for(let i=1; i<=15; i++) opts += `<option value="${i}" ${i===count?'selected':''}>${i}</option>`;
+        box.innerHTML += `<div><span style="font-size:10px;font-weight:700;">${g.name}:</span><select onchange="tempGradeCounts['${g.id}']=parseInt(this.value);updateSchoolClassesDropdown();">${opts}</select></div>`;
+      });
+      updateSchoolClassesDropdown();
+    }
+
+    function updateSchoolClassesDropdown() {
+      const stage = document.getElementById('cfgStage').value;
+      const grades = STAGE_CONFIG[stage] || [];
+      const dd = document.getElementById('schoolClassesDropdown');
+      dd.innerHTML = '';
+      grades.forEach(g => {
+        let c = tempGradeCounts[g.id] || 4;
+        for(let i=1; i<=c; i++) {
+          let label = `${g.id}/${i}`;
+          dd.innerHTML += `<option value="${label}">${label}</option>`;
+        }
+      });
+    }
+
+    function updateSchoolSubjectsDropdown() {
+      const stage = document.getElementById('cfgStage').value;
+      const subs = STAGE_SUBJECTS[stage] || [];
+      const dd = document.getElementById('schoolSubjectsDropdown');
+      dd.innerHTML = '';
+      subs.forEach(s => { dd.innerHTML += `<option value="${s}">${s}</option>`; });
+    }
+
+    function onStageChange() {
+      const stage = document.getElementById('cfgStage').value;
+      tempGradeCounts = {};
+      (STAGE_CONFIG[stage] || []).forEach(g => tempGradeCounts[g.id] = 4);
+      tempSubjects = (STAGE_SUBJECTS[stage] || []).slice(0, 3);
+      renderGradesControls();
+      updateSchoolSubjectsDropdown();
+      renderSubjectsChips();
+    }
+
+    function renderSubjectsChips() {
+      const box = document.getElementById('subjectsChipBox'); box.innerHTML = '';
+      tempSubjects.forEach((s, idx) => {
+        box.innerHTML += `<div class="chip"><span>${s}</span><span class="chip-del" onclick="tempSubjects.splice(${idx},1);renderSubjectsChips();">×</span></div>`;
+      });
+    }
+
+    function renderClassesChips() {
+      const box = document.getElementById('classesChipBox'); box.innerHTML = '';
+      tempMyClasses.forEach((c, idx) => {
+        box.innerHTML += `<div class="chip" style="background:#ECFDF5;color:#065F46;"><span>${c}</span><span class="chip-del" onclick="tempMyClasses.splice(${idx},1);renderClassesChips();">×</span></div>`;
+      });
+    }
+
+    function renderBackupChips() {
+      const box = document.getElementById('backupSlotsChipBox'); box.innerHTML = '';
+      if (tempBackupSlots.length === 0) {
+        box.innerHTML = '<span style="font-size:10px; color:#94A3B8;">لم تحدد حصص احتياط بعد.</span>';
+        return;
+      }
+      tempBackupSlots.forEach((slot, idx) => {
+        box.innerHTML += `<div class="chip" style="background:#FFF7ED;color:#C2410C;border-color:#FDBA74;"><span>🛡️ ${slot.replace('-', ' - حصة ')}</span><span class="chip-del" onclick="tempBackupSlots.splice(${idx},1);renderBackupChips();">×</span></div>`;
+      });
+    }
+
+    function renderOccasionsUI() {
+      const box = document.getElementById('occasionsChipBox');
+      box.innerHTML = '';
+      tempOccasions.forEach((occ, idx) => {
+        let hijriInfo = occ.hijri ? ` | ${occ.hijri} هـ` : '';
+        box.innerHTML += `
+          <div class="chip" style="background:#F5F3FF;color:#6D28D9;border-color:#DDD6FE;">
+            <span>${occ.name} (${occ.date.substring(5)}${hijriInfo})</span>
+            <span class="chip-del" onclick="tempOccasions.splice(${idx},1);renderOccasionsUI();">×</span>
+          </div>`;
+      });
+
+      const dd = document.getElementById('presetOccasionsDropdown');
+      dd.innerHTML = '<option value="">-- اختر من المناسبات المعتمدة --</option>';
+      DEFAULT_OCCASIONS.forEach((o, i) => {
+        let hText = o.hijri ? ` [${o.hijri} هـ]` : '';
+        dd.innerHTML += `<option value="${i}">${o.name} (${o.date}${hText})</option>`;
+      });
+    }
+
+    function addPresetOccasion() {
+      const dd = document.getElementById('presetOccasionsDropdown');
+      const idx = dd.value;
+      if (idx !== "") {
+        const item = DEFAULT_OCCASIONS[parseInt(idx)];
+        if (!tempOccasions.some(o => o.name === item.name)) {
+          tempOccasions.push({...item});
+          renderOccasionsUI();
+        }
+        dd.value = "";
+      }
+    }
+
+    function addNewCustomOccasion() {
+      const nameInput = document.getElementById('newOccasionName');
+      const dateInput = document.getElementById('newOccasionDate');
+      const name = nameInput.value.trim();
+      const date = dateInput.value;
+      
+      let hijriStr = "";
+      try {
+        const parts = date.split('-');
+        const dateObj = new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]));
+        hijriStr = new Intl.DateTimeFormat('ar-SA-u-ca-islamic-umalqura', { year:'numeric', month:'numeric', day:'numeric'}).format(dateObj);
+      } catch(e) {}
+
+      if (name && date) {
+        tempOccasions.push({ name, date, hijri: hijriStr });
+        nameInput.value = "";
+        dateInput.value = "";
+        document.getElementById('convertedHijriText').innerText = "الموافق هجرياً: --";
+        document.getElementById('convertedGregText').innerText = "الموافق ميلادياً: --";
+        renderOccasionsUI();
+      } else {
+        alert("يرجى إدخال اسم المناسبة وتاريخها المحدد");
+      }
+    }
+
+    function addBackupSlot() {
+      const day = document.getElementById('backupDaySelect').value;
+      const period = document.getElementById('backupPeriodSelect').value;
+      const slot = `${day}-${period}`;
+      if (!tempBackupSlots.includes(slot)) {
+        tempBackupSlots.push(slot);
+        renderBackupChips();
+      }
+    }
+
+    function addSelectedClass() {
+      const v = document.getElementById('schoolClassesDropdown').value;
+      if(v && !tempMyClasses.includes(v)) { tempMyClasses.push(v); renderClassesChips(); }
+    }
+
+    function addSelectedSubject() {
+      const v = document.getElementById('schoolSubjectsDropdown').value;
+      if(v && !tempSubjects.includes(v)) { tempSubjects.push(v); renderSubjectsChips(); }
+    }
+
+    function saveSettingsModal() {
+      appData.profile.teacher_name = document.getElementById('cfgTeacherName').value.trim();
+      appData.profile.school_name = document.getElementById('cfgSchoolName').value.trim();
+      appData.profile.stage = document.getElementById('cfgStage').value;
+      appData.profile.grade_counts = tempGradeCounts;
+      appData.profile.my_classes = tempMyClasses;
+      appData.profile.subjects = tempSubjects;
+
+      appData.occasions = tempOccasions;
+
+      appData.exams.selected_type = document.getElementById('cfgExamType').value;
+      appData.exams.exam_date = document.getElementById('cfgExamDate').value;
+
+      appData.activity = {
+        enabled: true,
+        day: document.getElementById('cfgActivityDay').value,
+        period: parseInt(document.getElementById('cfgActivityPeriod').value),
+        title: "النشاط الطلابي"
+      };
+
+      appData.backup = {
+        enabled: true,
+        slots: tempBackupSlots
+      };
+
+      appData.settings.mode = document.getElementById('cfgTimingMode').value;
+      appData.settings.duration = parseInt(document.getElementById('cfgLessonDuration').value);
+      
+      appData.settings.break_after = parseInt(document.getElementById('cfgBreakAfter').value);
+      appData.settings.break_duration = parseInt(document.getElementById('cfgBreakDuration').value);
+      appData.settings.prayer_after = parseInt(document.getElementById('cfgPrayerAfter').value);
+      appData.settings.prayer_duration = parseInt(document.getElementById('cfgPrayerDuration').value);
+
+      saveLocalData();
+      closeSettingsModal();
+      updateProfileDisplay();
+      updateDashboard();
+      renderGrid();
+      showVisualAlert("✅ تم حفظ كافة الإعدادات بنجاح في متصفحك!");
+    }
+
+    function onLessonTypeChange(type) {
+      if (type === 'backup') {
+        document.getElementById('mSubject').value = "حصة احتياط";
+      } else if (type === 'activity') {
+        document.getElementById('mSubject').value = "النشاط الطلابي";
+      }
+    }
+
+    function openModal(day, period) {
+      currentEdit = { day, period };
+      document.getElementById('modalTitle').innerText = `${day} - الحصة ${period}`;
+      const curr = (appData.lessons[day] && appData.lessons[day][period]) || { subject: '', classroom: '', notes: '', type: 'normal' };
+
+      const slotKey = `${day}-${period}`;
+      const actConfig = appData.activity || {};
+      const backupSlots = (appData.backup && appData.backup.slots) || [];
+
+      let detectedType = curr.type || 'normal';
+      if (actConfig.enabled && actConfig.day === day && parseInt(actConfig.period) === period) detectedType = 'activity';
+      if (backupSlots.includes(slotKey)) detectedType = 'backup';
+
+      document.getElementById('mLessonType').value = detectedType;
+
+      const sDd = document.getElementById('mSubjectSelect');
+      sDd.innerHTML = '<option value="">-- اختر مادة --</option>';
+      (appData.profile.subjects || []).forEach(s => sDd.innerHTML += `<option value="${s}">${s}</option>`);
+
+      const cDd = document.getElementById('mClassSelect');
+      cDd.innerHTML = '<option value="">-- اختر فصل --</option>';
+      (appData.profile.my_classes || []).forEach(c => cDd.innerHTML += `<option value="${c}">${c}</option>`);
+
+      document.getElementById('mSubject').value = curr.subject || (detectedType === 'backup' ? 'حصة احتياط' : (detectedType === 'activity' ? 'النشاط الطلابي' : ''));
+      document.getElementById('mClass').value = curr.classroom || '';
+      document.getElementById('mNotes').value = curr.notes || '';
+      sDd.value = curr.subject || '';
+      cDd.value = curr.classroom || '';
+
+      document.getElementById('editModal').style.display = 'flex';
+    }
+    function closeModal() { document.getElementById('editModal').style.display = 'none'; }
+
+    function saveModalData() {
+      const { day, period } = currentEdit;
+      if (!appData.lessons[day]) appData.lessons[day] = {};
+      appData.lessons[day][period] = {
+        subject: document.getElementById('mSubject').value.trim(),
+        classroom: document.getElementById('mClass').value.trim(),
+        notes: document.getElementById('mNotes').value.trim(),
+        type: document.getElementById('mLessonType').value
+      };
+      saveLocalData();
+      closeModal();
+      renderGrid();
+    }
+
+    function clearModalData() {
+      const { day, period } = currentEdit;
+      if (appData.lessons[day]) appData.lessons[day][period] = { subject: '', classroom: '', notes: '', type: 'normal' };
+      saveLocalData();
+      closeModal();
+      renderGrid();
+    }
+
+    window.onload = function() {
+      appData = loadLocalData();
+      updateProfileDisplay();
+      updateDashboard();
+      renderGrid();
+      setInterval(updateClock, 1000);
+      forceRotateLandscape();
+    };
+  </script>
+</body>
+</html>
