@@ -402,7 +402,6 @@
               <button style="background:#7C3AED;color:white;border:none;border-radius:5px;padding:0 8px;font-size:10.5px;font-weight:700;" onclick="addPresetOccasion()">➕ تفعيل</button>
             </div>
 
-            <!-- إضافة ما يستجد -->
             <div style="margin-top:6px; border-top:1px dashed #DDD6FE; padding-top:4px;">
               <span style="font-size:10px; font-weight:800; color:#4C1D95;">➕ إضافة ما يستجد من مناسبات (تحويل تلقائي):</span>
               <div style="display:flex; gap:4px; margin-top:3px;">
@@ -466,18 +465,21 @@
             </div>
           </div>
 
-          <!-- وقت صلاة الظهر -->
+          <!-- وقت صلاة الظهر مع خيار (بدون) -->
           <div style="background:#DCFCE7; border:1px solid #BBF7D0; border-radius:6px; padding:6px; margin-top:4px;">
             <div style="font-size:11px; font-weight:800; color:#15803D; margin-bottom:3px;">🕌 وقت صلاة الظهر:</div>
             <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px;">
               <div class="form-group-compact">
                 <label>موعد الصلاة:</label>
-                <select id="cfgPrayerAfter">
+                <select id="cfgPrayerAfter" onchange="togglePrayerDurationVisibility(this.value)">
+                  <option value="0">بدون</option>
+                  <option value="4">بعد الحصة الرابعة</option>
                   <option value="5">بعد الحصة الخامسة</option>
                   <option value="6">بعد الحصة السادسة</option>
+                  <option value="7">بعد الحصة السابعة</option>
                 </select>
               </div>
-              <div class="form-group-compact">
+              <div class="form-group-compact" id="prayerDurationGroup">
                 <label>مدة الصلاة:</label>
                 <select id="cfgPrayerDuration">
                   <option value="15">15 دقيقة</option>
@@ -601,8 +603,8 @@
         </div>
 
         <div class="features-card">
-          <h4>☕🕌 أوقات الفسحة والصلاة</h4>
-          <p>تحديد موعد ومدة الفسحة المدرسية وموعد ومدة صلاة الظهر بدقة مع إعادة حساب تواقيت الحصص آلياً.</p>
+          <h4>☕🕌 مرونة أوقات الفسحة وصلاة الظهر</h4>
+          <p>إمكانية تحديد موعد الفسحة المدرسية، مع قائمة لتوقيت صلاة الظهر تبدأ بخيار <b>(بدون)</b> للمدارس التي ينتهي دوامها قبل الظهر، مع إعادة حساب تواقيت الحصص آلياً.</p>
         </div>
 
         <div class="features-card">
@@ -737,6 +739,15 @@
       localStorage.setItem(STORAGE_KEY, JSON.stringify(appData));
     }
 
+    function togglePrayerDurationVisibility(val) {
+      const pGroup = document.getElementById('prayerDurationGroup');
+      if (parseInt(val) === 0) {
+        pGroup.style.display = 'none';
+      } else {
+        pGroup.style.display = 'block';
+      }
+    }
+
     function toggleCalendarInput(type) {
       if (type === 'hijri') {
         document.getElementById('gregorianInputDiv').style.display = 'none';
@@ -841,7 +852,7 @@
       const dur = parseInt(appData.settings.duration || 45);
       const bAfter = parseInt(appData.settings.break_after || 3);
       const bDur = parseInt(appData.settings.break_duration || 25);
-      const pAfter = parseInt(appData.settings.prayer_after || 6);
+      const pAfter = parseInt(appData.settings.prayer_after !== undefined ? appData.settings.prayer_after : 6);
       const pDur = parseInt(appData.settings.prayer_duration || 25);
 
       const addMinutes = (h, m, add) => {
@@ -867,7 +878,8 @@
           rows.push({ type: 'break', title: '☕ الفسحة المدرسية', startH: hour, startM: minute, endH: bEnd.h, endM: bEnd.m, time: `${formatT(hour, minute)} - ${formatT(bEnd.h, bEnd.m)}`, note: `استراحة وتناول وجبة الإفطار (${bDur} د)` });
           hour = bEnd.h; minute = bEnd.m;
         }
-        if (p === pAfter) {
+
+        if (pAfter > 0 && p === pAfter) {
           let pEnd = addMinutes(hour, minute, pDur);
           rows.push({ type: 'prayer', title: '🕌 صلاة الظهر', startH: hour, startM: minute, endH: pEnd.h, endM: pEnd.m, time: `${formatT(hour, minute)} - ${formatT(pEnd.h, pEnd.m)}`, note: `أداء صلاة الظهر جماعة بالمصلى (${pDur} د)` });
           hour = pEnd.h; minute = pEnd.m;
@@ -1068,8 +1080,11 @@
 
       document.getElementById('cfgBreakAfter').value = s.break_after || 3;
       document.getElementById('cfgBreakDuration').value = s.break_duration || 25;
-      document.getElementById('cfgPrayerAfter').value = s.prayer_after || 6;
+      
+      const currentPrayerAfter = s.prayer_after !== undefined ? s.prayer_after : 6;
+      document.getElementById('cfgPrayerAfter').value = currentPrayerAfter;
       document.getElementById('cfgPrayerDuration').value = s.prayer_duration || 25;
+      togglePrayerDurationVisibility(currentPrayerAfter);
 
       document.getElementById('cfgExamType').value = ex.selected_type;
       document.getElementById('cfgExamDate').value = ex.exam_date;
